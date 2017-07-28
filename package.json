@@ -10,14 +10,14 @@
     "build:mobile:ios": "react-native run-ios",
     "start:mobile": "node node_modules/react-native/local-cli/cli.js start",
     "test:mobile": "jest",
-    "start:dev:web": "./node_modules/.bin/webpack-dev-server --env=dev --progress --profile --colors --open",
-    "start:dev:web:https": "./node_modules/.bin/webpack-dev-server --env=dev --progress --profile --colors --open --https",
-    "build:prod:web": "./node_modules/.bin/webpack --env=prod --progress --profile --colors",
-    "start:prod:web": "node server",
+    "start:web:dev": "./node_modules/.bin/webpack-dev-server --env=dev --progress --profile --colors --open",
+    "start:web:dev:https": "./node_modules/.bin/webpack-dev-server --env=dev --progress --profile --colors --open --https",
+    "build:web:prod": "./node_modules/.bin/webpack --env=prod --progress --profile --colors",
+    "start:web:prod": "node server",
     "test:web": "karma start",
     "commit": "git-cz",
-    "heroku": "yarn build:prod:web && yarn start:prod:web",
-    "travis": "yarn test:web && yarn test:mobile && yarn build:prod:web && yarn bundle:mobile"
+    "heroku": "yarn build:web:prod && yarn start:web:prod",
+    "travis": "yarn test:web && yarn test:mobile && yarn build:web:prod && yarn bundle:mobile"
   },
   "dependencies": {
     "babel-eslint": "^7.2.3",
