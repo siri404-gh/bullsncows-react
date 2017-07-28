@@ -8,7 +8,9 @@ const variables = require('./variables');
 
 module.exports = Merge(CommonConfig, {
   devtool: 'cheap-module-source-map',
-
+  entry: {
+    app: ['react-hot-loader/patch', variables.entry],
+  },
   output: {
     path: path.resolve(__dirname, variables.dist),
     filename: '[name].bundle.js',
