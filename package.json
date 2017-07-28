@@ -4,7 +4,8 @@
 	"private": true,
 	"scripts": {
 		"bundle:mobile": "./node_modules/.bin/rimraf android/app/src/main/assets && mkdir android/app/src/main/assets && react-native bundle --platform android --dev false --entry-file index.android.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res/ && ./node_modules/.bin/rimraf android/app/src/main/assets && ./node_modules/.bin/rimraf .prod",
-		"build:mobile": "react-native run-android",
+    "build:mobile": "react-native run-android",
+    "build:mobile:ios": "react-native run-ios",
 		"start:mobile": "node node_modules/react-native/local-cli/cli.js start",
 		"test:mobile": "jest",
 		"start:dev:web": "./node_modules/.bin/webpack-dev-server --env=dev --progress --profile --colors --open",
@@ -44,7 +45,7 @@
 		"raw-loader": "^0.5.1",
 		"react": "16.0.0-alpha.12",
 		"react-dom": "16.0.0-alpha.12",
-		"react-hot-loader": "next",
+		"react-hot-loader": "3.0.0-beta.7",
 		"react-native": "0.46.4",
 		"react-redux": "^5.0.5",
 		"redux": "^3.7.2",
