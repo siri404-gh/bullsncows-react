@@ -5,7 +5,7 @@ const variables = require('./variables');
 
 module.exports = {
   entry: {
-    app: [variables.entry],
+    app: variables.entry,
   },
   output: {
     path: path.resolve(__dirname, variables.dist),
