@@ -4,7 +4,7 @@ import { AppRegistry, Text } from 'react-native';
 export default class ReactUltimate extends Component {
   render() {
     return (
-      <Text>Hello world!</Text>
+      <Text>Sreeram Padmanabhan world!</Text>
     );
   }
 }
