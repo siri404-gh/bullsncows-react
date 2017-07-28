@@ -1,0 +1,12 @@
+language: node_js
+node_js:
+- '7'
+before_install:
+- curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 0.23.2
+- export PATH="$HOME/.yarn/bin:$PATH"
+cache: yarn
+script:
+- yarn travis
+notifications:
+  slack:
+    secure: 5nJfL/n2csJjbltxwMASWm0knXdTK17Z5ksgyA7a7kimckfaOPyjQG8A8HyQuliYyywKe/e0zy3qkuNI8HfgjXMZ5yMGJhVlBewgWwa4WIAXuuZPbZ31d12R0d54dBUew3PWjLbBYCG9gr03EPue+yarT6P54Ok9fIaKIcdo3umntmwj88jtSEqCM+QQh0JC9Wdlyzb6T4hiIHcc+vlUxHgW37Ub94niansl/tSYiMTmHrgQXQpur24WgfyERPnID7vIGLf9xKklk+DUb/e5t5par809VrF1xJoF9TkLKfkKWv9yve0OiC7+ycqewngppw7gNWYJeVvqi6N1smhSb3xZVhPhjKSy5glrTl6Ny8kF2CT29nbbUnQuPkLKH7zCbQ06/H1AIpBPodycY1fLjtrOvoX1hKZw2zT+P4hOPDKBixh4R0XjOzHOVwp8EY4GvByJVFVt1QyVK5I8FcNkTRbY36mNyqmTL2+vlUiZgMdXMwDaddc76pK/icTJ8nF7zqMAQFpQeRtc2OG64eAQ/2KZOIhazsZ6WZChYwV2VMQkyLRREy9GliwKzUKvfpNADCermSQTqtVsviUoGQdQ0lJFnf6/LS1VHsNMwYC2XhKTahrRXaOFU72ZDLsQz/M6C6CZgwyK4owiMwv9dpuqbCYl5VLhfzreLxqNQU5l+fI=
