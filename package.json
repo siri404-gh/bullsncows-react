@@ -72,5 +72,8 @@
 		"testMatch": [
 			"**/__tests__/**/*.js?(x)"
 		]
-	}
+	},
+  "engines": {
+    "node": "7.6.0"
+  }
 }
