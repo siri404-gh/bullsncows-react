@@ -6,7 +6,7 @@ module.exports = {
   port: process.env.PORT || 5000,
   devPublicPath: '/',
   prodPublicPath: '/',
-  karma_files:['./data/**/*.test.js', './components/**/*.test.js'],
+  karma_files:['./src/data/**/*.test.js', './src/ui/**/components/**/*.test.js'],
   karma_preprocessors: ['webpack', 'sourcemap'],
   karma_browsers: ['PhantomJS'],
   karma_coverage_dir: '.coverage/'

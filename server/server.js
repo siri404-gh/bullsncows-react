@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const variables = require('./variables');
+const variables = require('../variables');
 
 app.use('/', express.static('.'));
 app.listen(variables.port);
