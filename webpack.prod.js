@@ -5,6 +5,9 @@ const CommonConfig = require('./webpack.common.js');
 const variables = require('./variables');
 
 module.exports = Merge(CommonConfig, {
+  entry: {
+    app: variables.entry,
+  },
   output: {
     path: path.join(__dirname, variables.prod),
     filename: '[name].bundle.js',
