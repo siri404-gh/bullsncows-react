@@ -60,12 +60,12 @@
 		"webpack": "^3.4.1",
 		"webpack-dev-server": "^2.6.1",
 		"webpack-manifest-plugin": "^1.2.1",
-		"webpack-merge": "^4.1.0"
-	},
-	"devDependencies": {
+		"webpack-merge": "^4.1.0",
 		"babel-jest": "20.0.3",
 		"jest": "20.0.4",
 		"react-test-renderer": "16.0.0-alpha.12"
+	},
+	"devDependencies": {
 	},
 	"jest": {
 		"preset": "react-native",
