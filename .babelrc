@@ -1,4 +1,11 @@
 {
-  "presets": ["react-native"],
-  "plugins": ["react-hot-loader/babel"]
+  "presets": [
+    ["es2015", {"modules": false}],
+    "stage-2",
+    "react",
+    "react-native"
+  ],
+  "plugins": [
+    "react-hot-loader/babel"
+  ]
 }

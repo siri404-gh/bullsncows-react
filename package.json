@@ -4,8 +4,8 @@
 	"private": true,
 	"scripts": {
 		"bundle:mobile": "./node_modules/.bin/rimraf android/app/src/main/assets && mkdir android/app/src/main/assets && react-native bundle --platform android --dev false --entry-file index.android.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res/ && ./node_modules/.bin/rimraf android/app/src/main/assets && ./node_modules/.bin/rimraf .prod",
-    "build:mobile": "react-native run-android",
-    "build:mobile:ios": "react-native run-ios",
+		"build:mobile": "react-native run-android",
+		"build:mobile:ios": "react-native run-ios",
 		"start:mobile": "node node_modules/react-native/local-cli/cli.js start",
 		"test:mobile": "jest",
 		"start:dev:web": "./node_modules/.bin/webpack-dev-server --env=dev --progress --profile --colors --open",
@@ -20,6 +20,8 @@
 	"dependencies": {
 		"babel-loader": "^7.1.1",
 		"babel-preset-es2015": "^6.24.1",
+		"babel-preset-react": "^6.24.1",
+		"babel-preset-stage-2": "^6.24.1",
 		"clean-webpack-plugin": "^0.1.16",
 		"css-loader": "^0.28.4",
 		"deepfreeze": "^2.0.0",
