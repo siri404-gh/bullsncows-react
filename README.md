@@ -1,16 +1,8 @@
 # reactUltimate
 
-editorconfig
-eslint
+Maximum callstack size exceed:
+babel preset to be set to 'react-native'
+watchman watch-del-all
+sudo rm -rf ./node_modules
 yarn
-git
-webpack
-webpack-dev-server
-webpack hot module replacement
-babel
-react
-react-native
-redux
-travis
-heroku
-express
+yarn start -- --reset-cache
