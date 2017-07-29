@@ -7,7 +7,7 @@ const ManifestPlugin = require('webpack-manifest-plugin');
 const variables = require('./variables');
 
 module.exports = Merge(CommonConfig, {
-  devtool: 'cheap-module-source-map',
+  devtool: 'inline-source-map',
   entry: {
     app: ['react-hot-loader/patch', variables.entry],
   },

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { AppRegistry, Text, TextInput, View } from 'react-native';
-import { TodoApp } from './src/ui/mobile/components/TodoApp/TodoApp';
+import { TodoApp } from './src/view/mobile/components/TodoApp/TodoApp';
 
 export default class ReactUltimate extends Component {
   constructor(props) {
