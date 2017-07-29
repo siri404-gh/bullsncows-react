@@ -16,7 +16,7 @@ ReactDOM.render(
 
 if (module.hot) {
   module.hot.accept(() => {
-    const nextRootReducer = require('./data/reducer');
+    const nextRootReducer = require('./src/data/reducer');
     store.replaceReducer(nextRootReducer);
   });
 }
