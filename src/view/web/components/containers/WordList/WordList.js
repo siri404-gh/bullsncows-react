@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { SingleWord } from '../../presentational/SingleWord/SingleWord';
 import { Points } from '../../presentational/Points/Points';
 import { resetWords } from '../../../../../actions/AddWord/AddWordActions';
+import { updatePoints } from '../../../../../actions/points/PointsActions';
 
 const WordList = ({ words, theWord, resetWords }) => {
   return (
@@ -29,7 +30,10 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-    resetWords: () => dispatch(resetWords()),
+    resetWords: () => {
+      dispatch(resetWords());
+      dispatch(updatePoints());
+    },
   });
 
 export default connect(
