@@ -26,8 +26,8 @@ module.exports = {
   module: {
     rules: [
       { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/, query: { presets: ['es2015'] } },
-      { test: /\.css$/, use: ['style-loader', 'css-loader?modules', 'postcss-loader',] },
-      // {test: /bootstrap\/js\//, loader: 'imports-loader?jQuery=jquery' },
+      { test: /\.css$/, use: ['style-loader', 'css-loader?modules', 'postcss-loader',], exclude: /node_modules/ },
+      { test: /bootstrap.css$/, use: ['style-loader', 'css-loader?modules',] },
       { test: /\.woff(\?v=\d+\.\d+\.\d+)?$/, loader: "url-loader?limit=10000&mimetype=application/font-woff" },
       { test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/, loader: "url-loader?limit=10000&mimetype=application/font-woff" },
       { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: "url-loader?limit=10000&mimetype=application/octet-stream" },

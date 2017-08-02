@@ -1,6 +1,8 @@
 # reactUltimate
 
 *Maximum callstack size exceed:
+* Clear watchman watches: `watchman watch-del-all`.\n  2. Delete the `node_modules` folder: `rm -rf node_modules && npm install`.\n  3. Reset packager cache: `rm -fr $TMPDIR/react-*` or `npm start -- --reset-cache`
+* watchman watch-del-all && rm -rf $TMPDIR/react-* && rm -rf node_modules/ && npm cache clean && yarn && yarn start:mobile
 * babel preset to be set to 'react-native'
 * watchman watch-del-all
 * sudo rm -rf ./node_modules
@@ -11,7 +13,7 @@
 
 * See the application in
 * [Firebase](https://reactultimate.firebaseapp.com/)
-* [Herkoku](http://reactultimate.herokuapp.com/)
+* [Heroku](http://reactultimate.herokuapp.com/)
 
 # Project Title
 
