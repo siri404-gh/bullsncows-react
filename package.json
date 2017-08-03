@@ -83,6 +83,12 @@
     "preset": "react-native",
     "testMatch": [
       "**/tests/**/*.js?(x)"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "es6",
+      "ios.js"
     ]
   },
   "engines": {
