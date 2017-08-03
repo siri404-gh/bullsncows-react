@@ -1,4 +1,5 @@
 import React from 'react';
+import { Text } from 'react-native';
 
 export const Points = ({word, theWord, length, resetWords }) => {
   let bulls = 0;
@@ -12,6 +13,6 @@ export const Points = ({word, theWord, length, resetWords }) => {
   });
 
   return (
-    <span> Bulls: {bulls} Cows: {cows}</span>
+    <Text> Bulls: {bulls} Cows: {cows}</Text>
   );
 };

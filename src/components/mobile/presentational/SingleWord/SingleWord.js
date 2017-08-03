@@ -1,7 +1,8 @@
 import React from 'react';
+import { Text } from 'react-native';
 
 export const SingleWord = ({ word }) => {
   return (
-    <span>{word}</span>
+    <Text>{word}</Text>
   );
 };

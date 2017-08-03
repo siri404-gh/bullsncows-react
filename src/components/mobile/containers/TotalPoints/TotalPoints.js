@@ -1,11 +1,10 @@
 import React from 'react';
+import { Text } from 'react-native';
 import { connect } from 'react-redux';
 
 const TotalPoints = ({points}) => {
   return (
-    <div>
-      Total Points : {points}
-    </div>
+    <Text> Total Points : {points}</Text>
   )
 };
 
