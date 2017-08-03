@@ -15,7 +15,7 @@ class AddWord extends Component {
         <TextInput
           style={{ height: 40, borderColor: 'gray', borderWidth: 0, marginBottom: 10 }}
           onChangeText={(text) => this.setState({ text })}
-          value={this.state.text} maxLength={4} autoFocus />
+          value={this.state.text} maxLength={4} />
         <Button
           onPress={() => {
             this.props.dispatch(addWord(this.state.text));

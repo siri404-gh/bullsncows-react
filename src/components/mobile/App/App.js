@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
 import { Provider } from "react-redux";
-import store from '../../../stores/store';
+import store from '../../../stores/mobileStore';
 import AddWord from '../containers/AddWord/AddWord';
 import WordList from '../containers/WordList/WordList';
 import TotalPoints from '../containers/TotalPoints/TotalPoints';

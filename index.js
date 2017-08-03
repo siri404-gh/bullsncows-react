@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 import { Provider } from 'react-redux';
 import store from './src/stores/store';
-import { App } from './src/view/web/App/App';
+import { App } from './src/components/web/App/App';
 
 ReactDOM.render(
   <AppContainer>
