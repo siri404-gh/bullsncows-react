@@ -19,7 +19,7 @@
     "lint": "./node_modules/.bin/eslint src/",
     "commit": "git-cz",
     "heroku": "yarn build:web:prod && yarn start:web:prod",
-    "travis": "yarn test:web && yarn build:web:prod && yarn bundle:mobile && yarn firebase",
+    "travis": "yarn test:web && yarn:test:mobile && yarn build:web:prod && yarn bundle:mobile && yarn firebase",
     "firebase": "./node_modules/.bin/webpack --env=dev && ./node_modules/.bin/firebase deploy --token 1/AkaRGOOJ36ytxkgkCtqoWsfuu8qoh61M1YhZERXj047uVhzdSAJHAoyhGQDPjuj9"
   },
   "dependencies": {
