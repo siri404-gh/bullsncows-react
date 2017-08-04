@@ -5,7 +5,8 @@ import {Points} from '../../presentational/Points/Points';
 import {resetWords} from '../../../../actions/words/wordsActions';
 import {updatePoints} from '../../../../actions/points/pointsActions';
 import {addNewWord} from '../../../../actions/theWord/theWordActions';
-import Styles from './WordList.css';
+import { addAttempt } from '../../../../actions/attempts/attemptsAction';
+import Styles from './WordList.less';
 
 const WordList = ({words, theWord, resetWords}) => {
   return (
@@ -39,6 +40,7 @@ const mapDispatchToProps = (dispatch) => ({
   resetWords: (num) => {
     dispatch(resetWords());
     dispatch(updatePoints(num));
+    dispatch(addAttempt());
     dispatch(addNewWord());
   },
 });

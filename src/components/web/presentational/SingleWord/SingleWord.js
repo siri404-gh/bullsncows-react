@@ -1,5 +1,5 @@
 import React from 'react';
-import Styles from './SingleWord.css';
+import Styles from './SingleWord.less';
 
 export const SingleWord = ({ word }) => {
   return (
