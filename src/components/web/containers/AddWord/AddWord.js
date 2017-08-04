@@ -9,7 +9,7 @@ const AddWord = ({ dispatch }) => {
     <div className={Styles.addWord}>
       <form onSubmit={(e) => e.preventDefault()}>
        Make a Guess: <input ref={node => input = node} type="text" maxLength='7' autoFocus className={Styles.input}/>
-        <button  type="button" className='btn btn-primary' onClick={() => {
+        <button type="submit" className='btn btn-primary' onClick={() => {
           dispatch(addWord(input.value));
           input.value = '';
         }}>Submit</button>
