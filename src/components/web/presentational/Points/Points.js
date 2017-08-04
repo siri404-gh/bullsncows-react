@@ -6,7 +6,7 @@ export const Points = ({word, theWord, length, resetWords }) => {
   word.split('').map((letter, i) => {
     if(letter === theWord[i]) bulls++;
     else if(theWord.indexOf(letter) > -1) cows++;
-    if(bulls === 4) {
+    if(bulls === theWord.length) {
       resetWords(length);
     }
   });
