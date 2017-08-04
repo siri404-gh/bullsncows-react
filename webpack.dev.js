@@ -4,6 +4,7 @@ const CommonConfig = require('./webpack.common.js');
 const Merge = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const variables = require('./variables');
 
 module.exports = Merge(CommonConfig, {
@@ -37,6 +38,7 @@ module.exports = Merge(CommonConfig, {
     new ManifestPlugin({
       fileName: '.manifest.json',
     }),
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new UglifyJSPlugin()
   ]
 });
