@@ -1,7 +1,8 @@
 import React from 'react';
+import Styles from './SingleWord.css';
 
 export const SingleWord = ({ word }) => {
   return (
-    <span>{word}</span>
+    <span className={Styles.singleWord}>{word}</span>
   );
 };

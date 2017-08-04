@@ -5,9 +5,12 @@ import {Points} from '../../presentational/Points/Points';
 import {resetWords} from '../../../../actions/words/wordsActions';
 import {updatePoints} from '../../../../actions/points/pointsActions';
 import {addNewWord} from '../../../../actions/theWord/theWordActions';
+import Styles from './WordList.css';
 
 const WordList = ({words, theWord, resetWords}) => {
   return (
+    <div className={Styles.WordList}>
+      <h6 className={Styles.center}> Your Guesses: </h6>
     <ol>
       {words.map((word) =>
         <li key={word.id}>
@@ -21,6 +24,7 @@ const WordList = ({words, theWord, resetWords}) => {
         </li>
       )}
     </ol>
+    </div>
   );
 };
 

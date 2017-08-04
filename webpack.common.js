@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const variables = require('./variables');
 
 module.exports = {
@@ -21,6 +22,7 @@ module.exports = {
 
   plugins: [
     new CleanWebpackPlugin([variables.dist, variables.prod, variables.karma_coverage_dir]),
+    new UglifyJSPlugin()
   ],
 
   module: {

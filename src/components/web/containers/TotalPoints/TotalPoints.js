@@ -1,9 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import Styles from './TotalPoints.css';
 
 const TotalPoints = ({points}) => {
   return (
-    <div>
+    <div className={Styles.totalPoints}>
       Total Points : {points}
     </div>
   )
