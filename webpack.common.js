@@ -21,7 +21,7 @@ module.exports = {
   },
 
   plugins: [
-    new CleanWebpackPlugin([variables.dist, variables.prod, variables.karma_coverage_dir]),
+    new CleanWebpackPlugin([variables.dist, variables.prod, variables.karma_coverage_dir, './*.log']),
     new UglifyJSPlugin()
   ],
 

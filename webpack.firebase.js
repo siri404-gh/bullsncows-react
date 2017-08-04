@@ -7,9 +7,8 @@ const ManifestPlugin = require('webpack-manifest-plugin');
 const variables = require('./variables');
 
 module.exports = Merge(CommonConfig, {
-  devtool: 'inline-source-map',
   entry: {
-    app: ['react-hot-loader/patch', variables.entry],
+    app: [variables.entry],
   },
   output: {
     path: path.resolve(__dirname, variables.dist),
@@ -18,25 +17,35 @@ module.exports = Merge(CommonConfig, {
     sourceMapFilename: '[name].map'
   },
 
-  devServer: {
-    hot: true, // Tell the dev-server we're using HMR
-    contentBase: path.resolve(__dirname, variables.dist),
-    port: variables.port,
-    host: 'localhost',
-    historyApiFallback: true,
-    noInfo: false,
-    stats: 'minimal',
-    publicPath: '/'
-  },
-
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Development',
+      title: 'Bulls & Cows',
       template: 'index.ejs'
     }),
     new ManifestPlugin({
       fileName: '.manifest.json',
     }),
-    new webpack.HotModuleReplacementPlugin(),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('production')
+    }),
+    new webpack.LoaderOptionsPlugin({
+      minimize: true,
+      debug: false
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      beautify: false,
+      mangle: {
+        screw_ie8: true,
+        keep_fnames: true,
+      },
+      compress: {
+        screw_ie8: true
+      },
+      parallel: {
+        cache: true,
+        workers: 2 // for e.g
+      },
+      comments: false
+    })
   ]
 });
