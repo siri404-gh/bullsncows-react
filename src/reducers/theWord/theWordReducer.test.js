@@ -22,4 +22,16 @@ describe("Testing theWordReducer", () => {
     deepfreeze(action);
     expect(reducer(stateBefore, action)).toEqual(stateAfter);
   });
+
+ it('Should return initial state upon triggering @@redux/INIT', () => {
+    const stateBefore = 'abcd';
+    const action = {
+      type: '@@redux/INIT'
+    };
+    const stateAfter = 'abcd';
+    deepfreeze(stateBefore);
+    deepfreeze(action);
+    expect(reducer(stateBefore, action)).toEqual(stateAfter);
+  });
+
 });

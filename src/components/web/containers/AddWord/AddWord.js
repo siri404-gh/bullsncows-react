@@ -7,7 +7,7 @@ const AddWord = ({ dispatch }) => {
   return (
     <div>
       <form onSubmit={(e) => e.preventDefault()}>
-        <input ref={node => input = node} type="text" maxLength='10' autoFocus/>
+        <input ref={node => input = node} type="text" maxLength='7' autoFocus/>
         <button onClick={() => {
           dispatch(addWord(input.value));
           input.value = '';
