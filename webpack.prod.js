@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 const Merge = require('webpack-merge');
 const CommonConfig = require('./webpack.common.js');
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const variables = require('./variables');
 
 module.exports = Merge(CommonConfig, {
@@ -11,8 +12,7 @@ module.exports = Merge(CommonConfig, {
   output: {
     path: path.join(__dirname, variables.prod),
     filename: '[name].bundle.js',
-    publicPath: variables.prodPublicPath,
-    sourceMapFilename: '[name].map'
+    publicPath: variables.prodPublicPath
   },
 
   plugins: [
@@ -42,6 +42,7 @@ module.exports = Merge(CommonConfig, {
       },
 
       comments: false
-    })
+    }),
+    new UglifyJSPlugin()
   ]
 });

@@ -61,3 +61,4 @@ prod
 .coverage
 coverage
 .vagrant
+server/firebase.json

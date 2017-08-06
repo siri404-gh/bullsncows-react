@@ -10,6 +10,7 @@ const AddWord = ({ theWord, add }) => {
       <form onSubmit={(e) => e.preventDefault()}>
         Make a Guess: <input ref={node => input = node} type="text" maxLength={theWord.length} autoFocus className={Styles.input} />
         <button type="submit" className='btn btn-secondary' onClick={() => {
+          if(input.value === '') return false;
           add(input.value);
           input.value = '';
         }}>Submit</button>
