@@ -5,11 +5,10 @@ import { Points } from '../../presentational/Points/Points';
 import { resetWords } from '../../../../actions/words/wordsActions';
 import { updatePoints } from '../../../../actions/points/pointsActions';
 import { addNewWord } from '../../../../actions/theWord/theWordActions';
-import { addAttempt } from '../../../../actions/attempts/attemptsAction';
 import { addLastWord } from '../../../../actions/lastword/lastwordActions';
 import Styles from './WordList.less';
 
-const WordList = ({ words, theWord, resetWords }) => {
+const WordList = ({ words, theWord, resetWords, userId }) => {
   return (
     <div className='col-xs-12'>
       <div className='col-xs-1 col-sm-3'>
@@ -24,7 +23,8 @@ const WordList = ({ words, theWord, resetWords }) => {
               word={word.word}
               theWord={theWord}
               length={words.length}
-              resetWords={resetWords} />
+              resetWords={resetWords}
+              userId={userId} />
           </div>
         )}
       </div>
@@ -36,16 +36,16 @@ const WordList = ({ words, theWord, resetWords }) => {
 
 const mapStateToProps = (state) => {
   return {
-    words: state.words.sort((a,b) => b.id - a.id),
+    words: state.words.sort((a, b) => b.id - a.id),
     theWord: state.theWord,
+    userId: state.user.uid
   };
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  resetWords: (num, word) => {
+  resetWords: (num, userId, word) => {
     dispatch(resetWords());
-    dispatch(updatePoints(num));
-    dispatch(addAttempt());
+    dispatch(updatePoints(num, userId, word));
     dispatch(addNewWord());
     dispatch(addLastWord(word));
   },

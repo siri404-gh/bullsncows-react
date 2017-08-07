@@ -3,6 +3,7 @@ const path = require('path');
 const Merge = require('webpack-merge');
 const CommonConfig = require('./webpack.common.js');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const variables = require('./variables');
 
 module.exports = Merge(CommonConfig, {
@@ -16,6 +17,10 @@ module.exports = Merge(CommonConfig, {
   },
 
   plugins: [
+    new HtmlWebpackPlugin({
+      title: 'Bulls & Cows',
+      template: 'index.ejs'
+    }),
     new webpack.LoaderOptionsPlugin({
       minimize: true,
       debug: false

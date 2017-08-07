@@ -17,7 +17,7 @@ const TotalPoints = ({ user, points, attempts, guesses, lastword }) => {
       <b> Points</b> : {points},
       <b> Words</b>: {attempts},
       <b> Guesses</b>: {guesses}
-      {lastword && <LastWord word={lastword} />}
+      {lastword.length > 0 && <LastWord word={lastword[lastword.length - 1]} />}
     </div>
   )
 };
@@ -26,7 +26,7 @@ const mapStateToProps = state => {
   return {
     user: state.user.displayName,
     points: state.points,
-    attempts: state.attempts,
+    attempts: state.lastword.length,
     guesses: state.words.length,
     lastword: state.lastword
   };
