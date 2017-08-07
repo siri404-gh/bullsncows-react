@@ -18,7 +18,7 @@ const AddWord = ({ theWord, add }) => {
         }}>
           <div className="form-group">
             <label htmlFor="usr">Guess:</label>
-            <input type="text" id="usr" ref={node => input = node} type="text" maxLength={theWord.length} autoFocus className={'form-control'} />
+            <input type="text" id="usr" ref={node => input = node} type="text" maxLength={theWord.length} autoFocus className={'form-control '+Styles.input} autoComplete="off" pattern="[a-z]+" title="Only lowercase allowed"/>
             {/* <button type="submit" className='btn btn-secondary' onClick={() => {
               if (input.value === '') return false;
               add(input.value);
