@@ -3,7 +3,7 @@ import firebase from "firebase/app";
 import firebaseui from 'firebaseui';
 import "firebase/auth";
 import 'firebaseui/dist/firebaseui.css';
-import {Loader} from '../presentational/Loader/Loader';
+import { Loader } from '../presentational/Loader/Loader';
 import Styles from './login.less';
 
 firebase.initializeApp({
@@ -52,15 +52,16 @@ const initApp = function (toggleLogin, toggleLoading, saveUser) {
   });
 };
 
-const Login = ({loading, toggleLogin, toggleLoading, saveUser}) => {
- window.addEventListener('load', function () {
+const Login = ({ loading, toggleLogin, toggleLoading, saveUser }) => {
+  window.addEventListener('load', function () {
     initApp(toggleLogin, toggleLoading, saveUser);
   });
   return (
     <div>
-    {loading && <Loader />}
-    <div id="firebaseui-auth-container" className={Styles.firebaseLoader}></div>
+      {loading && <Loader />}
+      <div id="firebaseui-auth-container" className={Styles.firebaseLoader}></div>
     </div>
-  )};
+  );
+};
 
 export default Login;

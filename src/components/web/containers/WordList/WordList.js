@@ -6,6 +6,7 @@ import { resetWords } from '../../../../actions/words/wordsActions';
 import { updatePoints } from '../../../../actions/points/pointsActions';
 import { addNewWord } from '../../../../actions/theWord/theWordActions';
 import { addAttempt } from '../../../../actions/attempts/attemptsAction';
+import { addLastWord } from '../../../../actions/lastword/lastwordActions';
 import Styles from './WordList.less';
 
 const WordList = ({ words, theWord, resetWords }) => {
@@ -35,17 +36,18 @@ const WordList = ({ words, theWord, resetWords }) => {
 
 const mapStateToProps = (state) => {
   return {
-    words: state.words.reverse(),
+    words: state.words.sort((a,b) => b.id - a.id),
     theWord: state.theWord,
   };
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  resetWords: (num) => {
+  resetWords: (num, word) => {
     dispatch(resetWords());
     dispatch(updatePoints(num));
     dispatch(addAttempt());
     dispatch(addNewWord());
+    dispatch(addLastWord(word));
   },
 });
 

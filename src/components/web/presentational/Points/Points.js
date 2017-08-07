@@ -7,7 +7,7 @@ export const Points = ({word, theWord, length, resetWords }) => {
     if(letter === theWord[i]) bulls++;
     else if(theWord.indexOf(letter) > -1) cows++;
     if(bulls === theWord.length) {
-      resetWords(length);
+      resetWords(length, word);
     }
   });
 
