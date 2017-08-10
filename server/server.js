@@ -29,25 +29,25 @@ app.post('/points', (req, res) => {
   return firebase.database().ref('users/' + userId).set({
     points,
     words
-  }).then(function(response) {
+  }).then(function (response) {
     res.send(response);
   });
 });
 
-app.get('/points/:userId', (req, res) => {
+app.get('/details/:userId', (req, res) => {
   const userId = req.params.userId;
   return firebase.database().ref('/users/' + userId)
     .once('value').
     then(function (snapshot) {
       try {
-      var points = snapshot.val().points;
-      var words = snapshot.val().words;
-      res.send({
-        points,
-        words
-      });
+        var points = snapshot.val().points;
+        var words = snapshot.val().words;
+        res.send({
+          points,
+          words
+        });
       }
-    catch(e) {
+      catch (e) {
         console.log('there has been an error', e);
       }
     });

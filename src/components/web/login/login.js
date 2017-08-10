@@ -24,7 +24,7 @@ const uiConfig = {
   ],
 };
 
-const initApp = function (toggleLogin, toggleLoading, saveUser, getPoints) {
+const initApp = function (toggleLogin, toggleLoading, saveUser, getDetails) {
   firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
       // User is signed in.
@@ -40,11 +40,11 @@ const initApp = function (toggleLogin, toggleLoading, saveUser, getPoints) {
           providerData: user.providerData
         });
         toggleLogin();
-        toggleLoading();
-        getPoints(user.uid);
+        toggleLoading(false);
+        getDetails(user.uid);
       });
     } else {
-      toggleLoading();
+      // toggleLoading(false);
       const ui = new firebaseui.auth.AuthUI(firebase.auth());
       ui.start('#firebaseui-auth-container', uiConfig);
     }
@@ -53,14 +53,13 @@ const initApp = function (toggleLogin, toggleLoading, saveUser, getPoints) {
   });
 };
 
-const Login = ({ loading, toggleLogin, toggleLoading, saveUser, getPoints }) => {
+const Login = ({ loading, toggleLogin, toggleLoading, saveUser, getDetails }) => {
   window.addEventListener('load', function () {
-    initApp(toggleLogin, toggleLoading, saveUser, getPoints);
+    initApp(toggleLogin, toggleLoading, saveUser, getDetails);
   });
 
   return (
     <div>
-      {loading && <Loader />}
       <div id="firebaseui-auth-container" className={Styles.firebaseLoader}></div>
     </div>
   );

@@ -8,8 +8,8 @@ const Services = {
       lastword
     });
   },
-  getPoints(userId) {
-    return axios.get('/points/'+userId);
+  getDetails(userId) {
+    return axios.get('/details/'+userId);
   }
 };
 

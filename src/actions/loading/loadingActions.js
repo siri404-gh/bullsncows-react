@@ -1,3 +1,4 @@
-export const toggleLoading = () => ({
-  type: 'TOGGLE_LOADING'
+export const toggleLoading = loading => ({
+  type: 'TOGGLE_LOADING',
+  loading
 });

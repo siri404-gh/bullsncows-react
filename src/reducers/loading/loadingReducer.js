@@ -1,7 +1,7 @@
 const loadingReducer = (state = true, action) => {
   switch(action.type) {
     case 'TOGGLE_LOADING':
-      return !state;
+      return action.loading;
     default:
       return state;
   }

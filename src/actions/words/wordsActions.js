@@ -5,6 +5,13 @@ export const addWord = word => ({
   word,
 });
 
+export const addAllWords = words => ({
+  type: 'ADD_ALL_WORDS',
+  words,
+});
+
 export const resetWords = _ => ({
   type: 'RESET_WORDS',
 });
+
+
