@@ -8,23 +8,29 @@ import { addNewWord } from '../../../../actions/theWord/theWordActions';
 import { addLastWord } from '../../../../actions/lastword/lastwordActions';
 import Styles from './WordList.less';
 
-const WordList = ({ words, theWord, resetWords, userId }) => {
+const WordList = ({ words, theWord, resetWords, userId, points, lastword }) => {
   return (
-    <div className='col-xs-12'>
+    <div className={Styles.WordList + ' col-xs-12'}>
       <div className='col-xs-1 col-sm-3'>
       </div>
-      <div className={Styles.WordList + ' col-xs-10 col-sm-6'}>
-        <h6 className={Styles.center}> Your Guesses: </h6>
+      <div className='col-xs-10 col-sm-6'>
+        {words.length > 0 && <h6 className={Styles.center}> Your Guesses: </h6>}
         {words.map((word) =>
-          <div key={word.id}>
-            <SingleWord
-              word={word.word} />
-            <Points
-              word={word.word}
-              theWord={theWord}
-              length={words.length}
-              resetWords={resetWords}
-              userId={userId} />
+          <div key={word.id} className={Styles.wordPoints}>
+            <div className='col-xs-6'>
+              <SingleWord
+                word={word.word} />
+            </div>
+            <div className='col-xs-6'>
+              <Points
+                word={word.word}
+                theWord={theWord}
+                length={words.length}
+                resetWords={resetWords}
+                userId={userId}
+                points={points}
+                lastword={lastword}/>
+              </div>
           </div>
         )}
       </div>
@@ -38,14 +44,16 @@ const mapStateToProps = (state) => {
   return {
     words: state.words.sort((a, b) => b.id - a.id),
     theWord: state.theWord,
-    userId: state.user.uid
+    userId: state.user.uid,
+    points: state.points,
+    lastword: state.lastword
   };
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  resetWords: (num, userId, word) => {
+  resetWords: (num, userId, lastword, word) => {
     dispatch(resetWords());
-    dispatch(updatePoints(num, userId, word));
+    dispatch(updatePoints(num, userId, [...lastword, word]));
     dispatch(addNewWord());
     dispatch(addLastWord(word));
   },

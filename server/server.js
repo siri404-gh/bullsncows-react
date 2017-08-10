@@ -12,30 +12,45 @@ var config = {
 };
 
 firebase.initializeApp(config);
-
 var database = firebase.database();
-
-function writeUserData(userId, points, word) {
-  firebase.database().ref('users/' + userId).set({
-    points,
-    word
-  });
-};
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
-    extended: true
+  extended: true
 }));
-
 
 app.use('/', express.static('./.prod/'));
 
 app.post('/points', (req, res) => {
   const userId = req.body.userId;
   const points = req.body.points;
-  const word = req.body.word;
+  const words = req.body.lastword;
 
-  writeUserData(userId, points, word);
+  return firebase.database().ref('users/' + userId).set({
+    points,
+    words
+  }).then(function(response) {
+    res.send(response);
+  });
+});
+
+app.get('/points/:userId', (req, res) => {
+  const userId = req.params.userId;
+  return firebase.database().ref('/users/' + userId)
+    .once('value').
+    then(function (snapshot) {
+      try {
+      var points = snapshot.val().points;
+      var words = snapshot.val().words;
+      res.send({
+        points,
+        words
+      });
+      }
+    catch(e) {
+        console.log('there has been an error', e);
+      }
+    });
 });
 
 app.listen(variables.port);

@@ -17,13 +17,17 @@ const AddWord = ({ theWord, add }) => {
           input.value = '';
         }}>
           <div className="form-group">
-            <label htmlFor="usr">Guess:</label>
-            <input type="text" id="usr" ref={node => input = node} type="text" maxLength={theWord.length} autoFocus className={'form-control ' + Styles.input} autoComplete="off" pattern="[a-z]+" title="Only lowercase allowed" />
-            {/* <button type="submit" className='btn btn-secondary' onClick={() => {
+            <div className='row'>
+              <div className='col-xs-3 col-sm-2 col-md-3'><label htmlFor="usr" className={Styles.guessString}> Guess: </label></div>
+              <div className='col-xs-9 col-sm-10 col-md-9'>
+                <input type="text" id="usr" ref={node => input = node} type="text" maxLength={theWord.length} autoFocus className={'form-control ' + Styles.input} autoComplete="off" pattern="[a-z]+" title="Only lowercase allowed" />
+              </div>
+              {/* <button type="submit" className='btn btn-secondary' onClick={() => {
               if (input.value === '') return false;
               add(input.value);
               input.value = '';
             }}>Submit</button> */}
+            </div>
           </div>
         </form>
       </div>

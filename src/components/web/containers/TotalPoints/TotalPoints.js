@@ -17,7 +17,8 @@ const TotalPoints = ({ user, points, attempts, guesses, lastword }) => {
       <b> Points</b> : {points},
       <b> Words</b>: {attempts},
       <b> Guesses</b>: {guesses}
-      {lastword.length > 0 && <LastWord word={lastword[lastword.length - 1]} />}
+      {lastword.length > 0 && <LastWord word={lastword[lastword.length - 1]} />},
+      <b> Average</b>: {points/attempts || 0}
     </div>
   )
 };
