@@ -8,7 +8,7 @@ describe("Testing UPDATE_POINTS", () => {
       type: 'UPDATE_POINTS',
       points: 8
     };
-    const stateAfter = 92;
+    const stateAfter = 8;
     deepfreeze(stateBefore);
     deepfreeze(action);
     expect(reducer(stateBefore, action)).toEqual(stateAfter);
