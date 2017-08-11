@@ -44,18 +44,22 @@ const LeaderBoard = ({ users, uid }) => {
   users.sort((a, b) => b.points - a.points);
   return (
     <div className={Styles.leaderBoard}>
-      <b> LeaderBoard </b>
-      <ol>
-        {users.map((user, i) => {
-          let bold = false;
-          console.log(user);
-          if (user.user === uid) bold = true;
-          return (
-            <li key={i} className={bold ? Styles.bold : Styles.normal}>{user.displayName.substr(0, 25)} - {user.points}</li>
-          )
-        }
-        )}
-      </ol>
+      <div className='row'><b className={Styles.center}> LeaderBoard </b></div>
+      {users.map((user, i) => {
+        let bold = false;
+        console.log(user);
+        if (user.user === uid) bold = true;
+        return (
+          <div key={i} className='row'>
+            <div className='col-xs-1'> {i+1} </div>
+            <div className='col-xs-9'>
+              <span className={bold ? Styles.bold : Styles.normal}>{user.displayName.substr(0, 25)}</span>
+            </div>
+            <div className='col-xs-1'> {user.points} </div>
+          </div>
+        )
+      }
+      )}
     </div>
   )
 };
