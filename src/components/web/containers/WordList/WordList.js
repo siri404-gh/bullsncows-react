@@ -7,6 +7,7 @@ import { updatePoints } from '../../../../actions/points/pointsActions';
 import { addNewWord } from '../../../../actions/theWord/theWordActions';
 import { addLastWord } from '../../../../actions/lastword/lastwordActions';
 import { getUsers } from '../../../../actions/users/usersActions';
+import bulls from '../../app/bulls.png';
 
 import Styles from './WordList.less';
 
@@ -59,6 +60,7 @@ const mapDispatchToProps = (dispatch) => ({
       method: 'feed',
       link: 'https://reactultimate-firebase.herokuapp.com/',
       caption: 'I scored ' + num + ' points.',
+      picture: bulls
     }, function(response){});
 
   },
