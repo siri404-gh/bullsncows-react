@@ -13,7 +13,7 @@ import Styles from './WordList.less';
 const WordList = ({ words, theWord, resetWords, userId, points, lastword, displayName }) => {
   return (
     <div className={Styles.WordList + ' col-xs-12'}>
-      {words.length > 0 && <h6 className={Styles.center}> Your Guesses: </h6>}
+      <div className='row'><h6 className={Styles.center}> Your Guesses </h6></div>
       {words.map((word) =>
         <div key={word.id} className={Styles.wordPoints}>
           <div className='col-xs-6'>
@@ -55,6 +55,12 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(addNewWord());
     dispatch(addLastWord(word));
     dispatch(getUsers());
+    FB.ui({
+      method: 'feed',
+      link: 'https://reactultimate-firebase.herokuapp.com/',
+      caption: 'Bulls & Cows',
+    }, function(response){});
+
   },
 });
 

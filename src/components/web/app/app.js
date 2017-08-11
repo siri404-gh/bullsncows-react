@@ -44,14 +44,13 @@ const LeaderBoard = ({ users, uid }) => {
   users.sort((a, b) => b.points - a.points);
   return (
     <div className={Styles.leaderBoard}>
-      <div className='row'><b className={Styles.center}> LeaderBoard </b></div>
+      <div className='row'><h6 className={Styles.center}> LeaderBoard </h6></div>
       {users.map((user, i) => {
         let bold = false;
-        console.log(user);
         if (user.user === uid) bold = true;
         return (
           <div key={i} className='row'>
-            <div className='col-xs-1'> {i+1} </div>
+            <div className='col-xs-1'> {i + 1} </div>
             <div className='col-xs-9'>
               <span className={bold ? Styles.bold : Styles.normal}>{user.displayName.substr(0, 25)}</span>
             </div>
@@ -66,17 +65,25 @@ const LeaderBoard = ({ users, uid }) => {
 
 const Board = ({ users, uid }) => (
   <div>
-    <div className='col-xs-12'>
-      <img className={Styles.headerImg} src={bulls} />
-      <img className={Styles.headerImg} src={cows} />
-      <TotalPoints />
-      <AddWord />
+    <div className='row'>
+      <div className='col-xs-12'>
+        <div className={'row ' + Styles.rowPadding }>
+          <img className={Styles.headerImg} src={bulls} />
+          <img className={Styles.headerImg} src={cows} />
+        </div>
+        <div className={Styles.borderTop + ' ' + Styles.rowPadding}>
+          <TotalPoints />
+        </div>
+        <AddWord />
+      </div>
     </div>
-    <div className={'col-md-7 ' + Styles.borderTop}>
-      <WordList />
-    </div>
-    <div className={'col-md-5 ' + Styles.borderLeft + ' ' + Styles.borderTop}>
-      <LeaderBoard users={users} uid={uid} />
+    <div className='row'>
+      <div className={'col-md-7 ' + Styles.borderTop + ' ' + Styles.borderRight}>
+        <WordList />
+      </div>
+      <div className={'col-md-5 ' + Styles.borderTop}>
+        <LeaderBoard users={users} uid={uid} />
+      </div>
     </div>
     <Rules />
   </div>

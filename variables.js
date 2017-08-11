@@ -4,6 +4,7 @@ module.exports = {
   'prod': './.prod',
   bundle: 'bundle.js',
   port: process.env.PORT || 5000,
+  devPort: 4000,
   devPublicPath: '/',
   prodPublicPath: '/',
   karma_files:['./src/**/*.test.js'],

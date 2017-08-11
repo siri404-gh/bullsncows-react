@@ -21,12 +21,15 @@ module.exports = Merge(CommonConfig, {
   devServer: {
     hot: true, // Tell the dev-server we're using HMR
     contentBase: path.resolve(__dirname, variables.dist),
-    port: variables.port,
+    port: variables.devPort,
     host: 'localhost',
     historyApiFallback: true,
     noInfo: false,
     stats: 'minimal',
-    publicPath: '/'
+    publicPath: '/',
+    proxy: {
+      "**": "http://localhost:5000"
+    }
   },
 
   plugins: [

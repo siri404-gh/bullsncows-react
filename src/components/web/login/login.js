@@ -18,16 +18,16 @@ const uiConfig = {
     firebase.auth.GoogleAuthProvider.PROVIDER_ID,
     firebase.auth.FacebookAuthProvider.PROVIDER_ID,
     // firebase.auth.TwitterAuthProvider.PROVIDER_ID,
-    firebase.auth.GithubAuthProvider.PROVIDER_ID,
-    firebase.auth.EmailAuthProvider.PROVIDER_ID,
-    firebase.auth.PhoneAuthProvider.PROVIDER_ID
+    // firebase.auth.GithubAuthProvider.PROVIDER_ID,
+    // firebase.auth.EmailAuthProvider.PROVIDER_ID,
+    // firebase.auth.PhoneAuthProvider.PROVIDER_ID
   ],
 };
 
 const initApp = function (toggleLogin, toggleLoading, saveUser, getDetails, getUsers) {
+  toggleLoading(true);
   firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
-      // User is signed in.
       user.getIdToken().then(function (accessToken) {
         saveUser({
           displayName: user.displayName,
@@ -40,18 +40,17 @@ const initApp = function (toggleLogin, toggleLoading, saveUser, getDetails, getU
           providerData: user.providerData
         });
         toggleLogin();
-        toggleLoading(false);
         getDetails(user.uid);
         getUsers();
       });
     } else {
-      // toggleLoading(false);
       const ui = new firebaseui.auth.AuthUI(firebase.auth());
       ui.start('#firebaseui-auth-container', uiConfig);
     }
   }, function (error) {
     console.log(error);
   });
+  toggleLoading(false);
 };
 
 const Login = ({ loading, toggleLogin, toggleLoading, saveUser, getDetails, getUsers }) => {
