@@ -1,4 +1,4 @@
-# reactUltimate
+# bullsncows
 
 *Maximum callstack size exceed:
 * Clear watchman watches: `watchman watch-del-all`.\n  2. Delete the `node_modules` folder: `rm -rf node_modules && npm install`.\n  3. Reset packager cache: `rm -fr $TMPDIR/react-*` or `npm start -- --reset-cache`
@@ -12,8 +12,8 @@
 # Your first Progressive Web App Code Lab
 
 * See the application in
-* [Firebase](https://reactultimate.firebaseapp.com/)
-* [Heroku](http://reactultimate.herokuapp.com/)
+* [Firebase](https://bullscnows.firebaseapp.com/)
+* [Heroku](http://bullscnows.herokuapp.com/)
 
 # Project Title
 

@@ -6,8 +6,8 @@ var bodyParser = require('body-parser');
 
 var config = {
   apiKey: "AIzaSyCyWyJYEXpl8rxyedqxRRuVGg4cc423nnU",
-  authDomain: "reactultimate.firebaseapp.com",
-  databaseURL: "https://reactultimate.firebaseio.com",
+  authDomain: "bullsncows.firebaseapp.com",
+  databaseURL: "https://bullsncows.firebaseio.com",
   storageBucket: "bucket.appspot.com"
 };
 

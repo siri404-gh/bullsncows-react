@@ -57,7 +57,7 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(getUsers());
     FB.ui({
       method: 'feed',
-      link: 'https://reactultimate-firebase.herokuapp.com/',
+      link: 'https://bullsncows-firebase.herokuapp.com/',
       caption: 'I scored ' + num + ' points.',
       picture: './bullsncows.png'
     }, function(response){});

@@ -8,7 +8,7 @@ import Styles from './login.less';
 
 firebase.initializeApp({
   apiKey: "AIzaSyCyWyJYEXpl8rxyedqxRRuVGg4cc423nnU",
-  authDomain: "reactultimate.firebaseapp.com",
+  authDomain: "bullsncows.firebaseapp.com",
 });
 
 // FirebaseUI config.
