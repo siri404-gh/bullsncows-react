@@ -46,10 +46,10 @@ const LeaderBoard = ({ users, uid }) => (
     <ol>
       {users.map((user, i) => {
         let bold = false;
-        console.log(uid);
+        console.log(user);
         if(user.user === uid) bold = true;
         return (
-          <li key={i} className={bold? Styles.bold: Styles.normal}>{user.user.substr(0, 10)} - {user.points}</li>
+          <li key={i} className={bold? Styles.bold: Styles.normal}>{user.displayName.substr(0, 25)} - {user.points}</li>
         )
       }
       )}
@@ -65,10 +65,10 @@ const Board = ({ users, uid }) => (
       <TotalPoints />
       <AddWord />
     </div>
-    <div className='col-md-7'>
+    <div className={'col-md-7 ' + Styles.borderTop}>
       <WordList />
     </div>
-    <div className={'col-md-5 ' + Styles.borderLeft}>
+    <div className={'col-md-5 ' + Styles.borderLeft + ' ' + Styles.borderTop}>
       <LeaderBoard users={users} uid={uid}/>
     </div>
     <Rules />

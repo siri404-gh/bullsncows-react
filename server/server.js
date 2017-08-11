@@ -25,10 +25,12 @@ app.post('/points', (req, res) => {
   const userId = req.body.userId;
   const points = req.body.points;
   const words = req.body.lastword;
+  const displayName = req.body.displayName;
 
   return firebase.database().ref('users/' + userId).set({
     points,
-    words
+    words,
+    displayName
   }).then(function (response) {
     res.send(response);
   });

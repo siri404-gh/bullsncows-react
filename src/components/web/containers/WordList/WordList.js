@@ -6,9 +6,11 @@ import { resetWords } from '../../../../actions/words/wordsActions';
 import { updatePoints } from '../../../../actions/points/pointsActions';
 import { addNewWord } from '../../../../actions/theWord/theWordActions';
 import { addLastWord } from '../../../../actions/lastword/lastwordActions';
+import { getUsers } from '../../../../actions/users/usersActions';
+
 import Styles from './WordList.less';
 
-const WordList = ({ words, theWord, resetWords, userId, points, lastword }) => {
+const WordList = ({ words, theWord, resetWords, userId, points, lastword, displayName }) => {
   return (
     <div className={Styles.WordList + ' col-xs-12'}>
       {words.length > 0 && <h6 className={Styles.center}> Your Guesses: </h6>}
@@ -26,7 +28,8 @@ const WordList = ({ words, theWord, resetWords, userId, points, lastword }) => {
               resetWords={resetWords}
               userId={userId}
               points={points}
-              lastword={lastword} />
+              lastword={lastword}
+              displayName={displayName}/>
           </div>
         </div>
       )}
@@ -40,16 +43,18 @@ const mapStateToProps = (state) => {
     theWord: state.theWord,
     userId: state.user.uid,
     points: state.points,
-    lastword: state.lastword
+    lastword: state.lastword,
+    displayName: state.user.displayName
   };
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  resetWords: (num, userId, lastword, word) => {
+  resetWords: (num, userId, lastword, word, displayName) => {
     dispatch(resetWords());
-    dispatch(updatePoints(num, userId, [...lastword, word]));
+    dispatch(updatePoints(num, userId, [...lastword, word], displayName));
     dispatch(addNewWord());
     dispatch(addLastWord(word));
+    dispatch(getUsers());
   },
 });
 

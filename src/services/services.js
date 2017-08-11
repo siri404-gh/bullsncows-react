@@ -1,11 +1,12 @@
 import axios from 'axios';
 
 const Services = {
-  updatePoints(points, userId, lastword) {
+  updatePoints(points, userId, lastword, displayName) {
     return axios.post('/points', {
       userId,
       points,
-      lastword
+      lastword,
+      displayName
     });
   },
   getDetails(userId) {

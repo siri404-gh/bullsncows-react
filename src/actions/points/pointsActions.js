@@ -1,8 +1,8 @@
 import Services from '../../services/services';
 import { partial } from '../../utils/utils';
 
-export const updatePointsRoot = (updatePoints, points, userId, lastword) => dispatch => {
-  return updatePoints(points, userId, lastword)
+export const updatePointsRoot = (updatePoints, points, userId, lastword, displayName) => dispatch => {
+  return updatePoints(points, userId, lastword, displayName)
     .then(response => {
       dispatch({
         type: 'UPDATE_POINTS',

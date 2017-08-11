@@ -10,6 +10,7 @@ export const getUsersRoot = (getUsersService) => dispatch => {
       for (var user in response.data.users) {
         dataParsed.push({
           user: user,
+          displayName: response.data.users[user].displayName,
           points: response.data.users[user].points
         });
       }
