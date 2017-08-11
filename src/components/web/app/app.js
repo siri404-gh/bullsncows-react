@@ -30,7 +30,7 @@ class App extends Component {
             saveUser={saveUser}
             getDetails={getDetails}
             getUsers={getUsers} />}
-          {login && !loading && <Board users={users} uid={uid}/>}
+          {login && !loading && <Board users={users} uid={uid} />}
           {loading && <Loader />}
         </div>
         <div className='col-md-2 col-lg-3'>
@@ -40,22 +40,25 @@ class App extends Component {
   }
 };
 
-const LeaderBoard = ({ users, uid }) => (
-  <div className={Styles.leaderBoard}>
-    <b> LeaderBoard </b>
-    <ol>
-      {users.map((user, i) => {
-        let bold = false;
-        console.log(user);
-        if(user.user === uid) bold = true;
-        return (
-          <li key={i} className={bold? Styles.bold: Styles.normal}>{user.displayName.substr(0, 25)} - {user.points}</li>
-        )
-      }
-      )}
-    </ol>
-  </div>
-);
+const LeaderBoard = ({ users, uid }) => {
+  users.sort((a, b) => b.points - a.points);
+  return (
+    <div className={Styles.leaderBoard}>
+      <b> LeaderBoard </b>
+      <ol>
+        {users.map((user, i) => {
+          let bold = false;
+          console.log(user);
+          if (user.user === uid) bold = true;
+          return (
+            <li key={i} className={bold ? Styles.bold : Styles.normal}>{user.displayName.substr(0, 25)} - {user.points}</li>
+          )
+        }
+        )}
+      </ol>
+    </div>
+  )
+};
 
 const Board = ({ users, uid }) => (
   <div>
@@ -69,7 +72,7 @@ const Board = ({ users, uid }) => (
       <WordList />
     </div>
     <div className={'col-md-5 ' + Styles.borderLeft + ' ' + Styles.borderTop}>
-      <LeaderBoard users={users} uid={uid}/>
+      <LeaderBoard users={users} uid={uid} />
     </div>
     <Rules />
   </div>

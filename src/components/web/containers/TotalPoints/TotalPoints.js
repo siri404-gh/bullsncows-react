@@ -11,7 +11,7 @@ const LastWord = ({ word }) => {
 };
 
 const rank = (users, uid) => {
-  const sorted = users.sort((a, b) => b - a);
+  const sorted = users.sort((a, b) => b.points - a.points);
   return sorted.findIndex(user => user.user === uid) + 1;
 };
 
