@@ -16,6 +16,12 @@ import { getDetails } from '../../../actions/details/detailsActions';
 import { getUsers } from '../../../actions/users/usersActions';
 
 class App extends Component {
+  componentDidMount() {
+    var meta=document.createElement('meta');
+    meta.setAttribute('property', 'og:image');
+    meta.setAttribute('content', bulls);
+    document.getElementsByTagName('head')[0].appendChild(meta);
+  }
   render() {
     const { login, loading, toggleLogin, toggleLoading, saveUser, getDetails, users, getUsers, uid } = this.props;
     return (
