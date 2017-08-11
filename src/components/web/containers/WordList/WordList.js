@@ -60,7 +60,8 @@ const mapDispatchToProps = (dispatch) => ({
       method: 'feed',
       link: 'https://reactultimate-firebase.herokuapp.com/',
       caption: 'I scored ' + num + ' points.',
-      picture: bulls
+      picture: bulls,
+      thumbnail: bulls
     }, function(response){});
 
   },
