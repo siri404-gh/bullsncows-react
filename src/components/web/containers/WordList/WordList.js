@@ -11,31 +11,25 @@ import Styles from './WordList.less';
 const WordList = ({ words, theWord, resetWords, userId, points, lastword }) => {
   return (
     <div className={Styles.WordList + ' col-xs-12'}>
-      <div className='col-xs-1 col-sm-3'>
-      </div>
-      <div className='col-xs-10 col-sm-6'>
-        {words.length > 0 && <h6 className={Styles.center}> Your Guesses: </h6>}
-        {words.map((word) =>
-          <div key={word.id} className={Styles.wordPoints}>
-            <div className='col-xs-6'>
-              <SingleWord
-                word={word.word} />
-            </div>
-            <div className='col-xs-6'>
-              <Points
-                word={word.word}
-                theWord={theWord}
-                length={words.length}
-                resetWords={resetWords}
-                userId={userId}
-                points={points}
-                lastword={lastword}/>
-              </div>
+      {words.length > 0 && <h6 className={Styles.center}> Your Guesses: </h6>}
+      {words.map((word) =>
+        <div key={word.id} className={Styles.wordPoints}>
+          <div className='col-xs-6'>
+            <SingleWord
+              word={word.word} />
           </div>
-        )}
-      </div>
-      <div className='col-xs-1 col-sm-3'>
-      </div>
+          <div className='col-xs-6'>
+            <Points
+              word={word.word}
+              theWord={theWord}
+              length={words.length}
+              resetWords={resetWords}
+              userId={userId}
+              points={points}
+              lastword={lastword} />
+          </div>
+        </div>
+      )}
     </div>
   );
 };

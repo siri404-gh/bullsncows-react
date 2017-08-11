@@ -10,7 +10,12 @@ const LastWord = ({ word }) => {
   );
 };
 
-const TotalPoints = ({ user, points, attempts, guesses, lastword }) => {
+const rank = (users, uid) => {
+  const sorted = users.sort((a, b) => b - a);
+  return sorted.findIndex(user => user.user === uid) + 1;
+};
+
+const TotalPoints = ({ user, uid, points, attempts, guesses, lastword, users }) => {
   return (
     <div className={Styles.totalPoints}>
       Hello {user},
@@ -19,6 +24,7 @@ const TotalPoints = ({ user, points, attempts, guesses, lastword }) => {
       <b> Guesses</b>: {guesses}
       {lastword.length > 0 && <LastWord word={lastword[lastword.length - 1]} />},
       <b> Average</b>: {points/attempts || 0}
+      <b> Rank</b>: {rank(users, uid)}
     </div>
   )
 };
@@ -26,10 +32,12 @@ const TotalPoints = ({ user, points, attempts, guesses, lastword }) => {
 const mapStateToProps = state => {
   return {
     user: state.user.displayName,
+    uid: state.user.uid,
     points: state.points,
     attempts: state.lastword.length,
     guesses: state.words.length,
-    lastword: state.lastword
+    lastword: state.lastword,
+    users: state.users
   };
 };
 

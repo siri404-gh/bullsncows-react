@@ -13,10 +13,11 @@ import { toggleLogin } from '../../../actions/login/loginActions';
 import { toggleLoading } from '../../../actions/loading/loadingActions';
 import { saveUser } from '../../../actions/user/userActions';
 import { getDetails } from '../../../actions/details/detailsActions';
+import { getUsers } from '../../../actions/users/usersActions';
 
 class App extends Component {
   render() {
-    const { login, loading, toggleLogin, toggleLoading, saveUser, getDetails } = this.props;
+    const { login, loading, toggleLogin, toggleLoading, saveUser, getDetails, users, getUsers, uid } = this.props;
     return (
       <div>
         <div className='col-md-2 col-lg-3'>
@@ -27,8 +28,9 @@ class App extends Component {
             toggleLogin={toggleLogin}
             toggleLoading={toggleLoading}
             saveUser={saveUser}
-            getDetails={getDetails} />}
-          {login && !loading && <Board loading={loading} />}
+            getDetails={getDetails}
+            getUsers={getUsers} />}
+          {login && !loading && <Board users={users} uid={uid}/>}
           {loading && <Loader />}
         </div>
         <div className='col-md-2 col-lg-3'>
@@ -38,19 +40,43 @@ class App extends Component {
   }
 };
 
-const Board = () => (
+const LeaderBoard = ({ users, uid }) => (
+  <div className={Styles.leaderBoard}>
+    <b> LeaderBoard </b>
+    <ol>
+      {users.map((user, i) => {
+        let bold = false;
+        console.log(uid);
+        if(user.user === uid) bold = true;
+        return (
+          <li key={i} className={bold? Styles.bold: Styles.normal}>{user.user.substr(0, 10)} - {user.points}</li>
+        )
+      }
+      )}
+    </ol>
+  </div>
+);
+
+const Board = ({ users, uid }) => (
   <div>
-    <img className={Styles.headerImg} src={bulls} />
-    <img className={Styles.headerImg} src={cows} />
-    <TotalPoints />
-    <AddWord />
-    <WordList />
+    <div className='col-xs-12'>
+      <img className={Styles.headerImg} src={bulls} />
+      <img className={Styles.headerImg} src={cows} />
+      <TotalPoints />
+      <AddWord />
+    </div>
+    <div className='col-md-7'>
+      <WordList />
+    </div>
+    <div className={'col-md-5 ' + Styles.borderLeft}>
+      <LeaderBoard users={users} uid={uid}/>
+    </div>
     <Rules />
   </div>
 );
 
 const Rules = () => (
-  <div className={Styles.rules + ' col-xs-12'}>
+  <div className={Styles.borderTop + ' col-xs-12'}>
     <div className='col-sm-1'>
     </div>
     <div className='col-sm-10'>
@@ -66,7 +92,9 @@ const Rules = () => (
 const mapStateToProps = state => {
   return {
     login: state.login,
-    loading: state.loading
+    loading: state.loading,
+    users: state.users,
+    uid: state.user.uid
   };
 };
 
@@ -74,7 +102,8 @@ const mapDispatchToProps = (dispatch) => ({
   toggleLogin: () => dispatch(toggleLogin()),
   toggleLoading: loading => dispatch(toggleLoading(loading)),
   saveUser: data => dispatch(saveUser(data)),
-  getDetails: userId => dispatch(getDetails(userId))
+  getDetails: userId => dispatch(getDetails(userId)),
+  getUsers: () => dispatch(getUsers())
 });
 
 export default connect(

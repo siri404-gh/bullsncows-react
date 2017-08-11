@@ -24,7 +24,7 @@ const uiConfig = {
   ],
 };
 
-const initApp = function (toggleLogin, toggleLoading, saveUser, getDetails) {
+const initApp = function (toggleLogin, toggleLoading, saveUser, getDetails, getUsers) {
   firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
       // User is signed in.
@@ -42,6 +42,7 @@ const initApp = function (toggleLogin, toggleLoading, saveUser, getDetails) {
         toggleLogin();
         toggleLoading(false);
         getDetails(user.uid);
+        getUsers();
       });
     } else {
       // toggleLoading(false);
@@ -53,9 +54,9 @@ const initApp = function (toggleLogin, toggleLoading, saveUser, getDetails) {
   });
 };
 
-const Login = ({ loading, toggleLogin, toggleLoading, saveUser, getDetails }) => {
+const Login = ({ loading, toggleLogin, toggleLoading, saveUser, getDetails, getUsers }) => {
   window.addEventListener('load', function () {
-    initApp(toggleLogin, toggleLoading, saveUser, getDetails);
+    initApp(toggleLogin, toggleLoading, saveUser, getDetails, getUsers);
   });
 
   return (

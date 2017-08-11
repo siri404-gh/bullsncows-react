@@ -37,14 +37,28 @@ app.post('/points', (req, res) => {
 app.get('/details/:userId', (req, res) => {
   const userId = req.params.userId;
   return firebase.database().ref('/users/' + userId)
-    .once('value').
-    then(function (snapshot) {
+    .once('value').then(function (snapshot) {
       try {
         var points = snapshot.val().points;
         var words = snapshot.val().words;
         res.send({
           points,
           words
+        });
+      }
+      catch (e) {
+        console.log('there has been an error', e);
+      }
+    });
+});
+
+app.get('/users', (req, res) => {
+  return firebase.database().ref('/users/')
+    .once('value').then(function (snapshot) {
+      try {
+        var users = snapshot.val();
+        res.send({
+          users
         });
       }
       catch (e) {
