@@ -1,4 +1,4 @@
-package com.reactultimate;
+package com.bullsncows;
 
 import android.app.Application;
 

@@ -3,4 +3,4 @@ import App from "./src/components/mobile/app/app";
 
 const { AppRegistry } = React;
 
-AppRegistry.registerComponent("reactUltimate", () => App);
+AppRegistry.registerComponent("bullsncows", () => App);

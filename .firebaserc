@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "bullsncows"
+    "default": "bullsncows",
+    "staging": "reactultimate"
   }
 }
