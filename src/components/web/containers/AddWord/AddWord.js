@@ -3,8 +3,13 @@ import { connect } from 'react-redux';
 import { addWord } from '../../../../actions/words/wordsActions';
 import Styles from './AddWord.less';
 
-const AddWord = ({ theWord, add }) => {
+const AddWord = ({ theWord, add, words }) => {
   let input;
+
+  const populate = () => {
+    console.log(words.pop());
+  }
+
   return (
     <div className={Styles.addWord + ' col-xs-12'}>
       <form onSubmit={(e) => {
@@ -17,7 +22,7 @@ const AddWord = ({ theWord, add }) => {
           <div className='row'>
             <div className='col-xs-3 col-sm-2 col-md-3'><label htmlFor="usr" className={Styles.guessString}> Guess: </label></div>
             <div className='col-xs-9 col-sm-10 col-md-9'>
-              <input type="text" id="usr" ref={node => input = node} type="text" maxLength={theWord.length} autoFocus className={'form-control ' + Styles.input} autoComplete="off" pattern="[a-z]+" title="Only lowercase allowed" />
+              <input type="text" id="usr" ref={node => input = node} type="text" maxLength={theWord.length} onKeyDown={populate} autoFocus className={'form-control ' + Styles.input} autoComplete="off" pattern="[a-z]+" title="Only lowercase allowed" />
             </div>
             {/* <button type="submit" className='btn btn-secondary' onClick={() => {
               if (input.value === '') return false;
@@ -34,6 +39,7 @@ const AddWord = ({ theWord, add }) => {
 const mapStateToProps = (state) => {
   return {
     theWord: state.theWord,
+    words: state.words
   };
 };
 
