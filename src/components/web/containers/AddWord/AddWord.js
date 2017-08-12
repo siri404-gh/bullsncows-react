@@ -7,7 +7,7 @@ const AddWord = ({ theWord, add, words }) => {
   let input;
 
   const populate = () => {
-    console.log(words.pop());
+    // console.log(words.pop());
   }
 
   return (
