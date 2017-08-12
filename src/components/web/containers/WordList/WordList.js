@@ -57,9 +57,9 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(getUsers());
     if( num % 2 === 0 ) {
       FB.ui({
-        method: 'share',
+        method: 'feed',
         link: 'https://bullsncows-firebase.herokuapp.com/',
-        title: 'I scored ' + num + ' points.',
+        caption: 'I scored ' + num + ' points.',
         picture: 'https://bullsncows-firebase.herokuapp.com/static/bullsncows.png'
       }, function(response){});
     }
