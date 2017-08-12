@@ -31,13 +31,13 @@ const initApp = function (toggleLogin, toggleLoading, saveUser, getDetails, getU
       user.getIdToken().then(function (accessToken) {
         saveUser({
           displayName: user.displayName,
-          email: user.email,
-          emailVerified: user.emailVerified,
-          phoneNumber: user.phoneNumber,
-          photoURL: user.photoURL,
           uid: user.uid,
-          accessToken: accessToken,
-          providerData: user.providerData
+          // email: user.email,
+          // emailVerified: user.emailVerified,
+          // phoneNumber: user.phoneNumber,
+          // photoURL: user.photoURL,
+          // accessToken: accessToken,
+          // providerData: user.providerData
         });
         toggleLogin();
         getDetails(user.uid);

@@ -5,8 +5,8 @@ import WordList from '../containers/WordList/WordList';
 import TotalPoints from '../containers/TotalPoints/TotalPoints';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Styles from './app.less';
-import bulls from './bulls.png';
-import cows from './cows.png';
+import bulls from './../../../../images/bulls.png';
+import cows from '../../../../images/cows.png';
 import Login from '../login/login';
 import { Loader } from '../presentational/Loader/Loader';
 import { toggleLogin } from '../../../actions/login/loginActions';
@@ -67,7 +67,7 @@ const Board = ({ users, uid }) => (
   <div>
     <div className='row'>
       <div className='col-xs-12'>
-        <div className={'row ' + Styles.rowPadding }>
+        <div className={'row ' + Styles.rowPadding}>
           <img className={Styles.headerImg} src={bulls} />
           <img className={Styles.headerImg} src={cows} />
         </div>
@@ -86,7 +86,8 @@ const Board = ({ users, uid }) => (
       </div>
     </div>
     <Rules />
-  </div>
+    {/* Love this game? <a href='https://www.facebook.com/dialog/share?app_id=111074542870113&display=popup&quote=I%20scored%20100%20points&href=https%3A%2F%2Fbullsncows-firebase.herokuapp.com&redirect_uri=https://bullsncows-firebase.herokuapp.com/'>Share it</a> ! */}
+  </div >
 );
 
 const Rules = () => (
