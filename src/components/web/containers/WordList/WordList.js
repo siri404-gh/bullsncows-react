@@ -56,9 +56,9 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(addLastWord(word));
     dispatch(getUsers());
     FB.ui({
-      method: 'feed',
+      method: 'share',
       link: 'https://bullsncows-firebase.herokuapp.com/',
-      caption: 'I scored ' + num + ' points.',
+      title: 'I scored ' + num + ' points.',
       picture: 'https://bullsncows-firebase.herokuapp.com/bullsncows.png'
     }, function(response){});
 

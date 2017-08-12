@@ -3,6 +3,7 @@ const app = express();
 const variables = require('../variables');
 const firebase = require('firebase');
 var bodyParser = require('body-parser');
+var morgan = require('morgan')
 
 var config = {
   apiKey: "AIzaSyCyWyJYEXpl8rxyedqxRRuVGg4cc423nnU",
@@ -18,6 +19,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true
 }));
+
+app.use(morgan('combined'))
 
 app.use('/', express.static('./.prod/'));
 
