@@ -59,7 +59,7 @@ const mapDispatchToProps = (dispatch) => ({
       method: 'feed',
       link: 'https://bullsncows-firebase.herokuapp.com/',
       caption: 'I scored ' + num + ' points.',
-      picture: './bullsncows.png'
+      picture: 'https://bullsncows-firebase.herokuapp.com/bullsncows.png'
     }, function(response){});
 
   },

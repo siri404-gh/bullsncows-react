@@ -21,6 +21,8 @@ app.use(bodyParser.urlencoded({
 
 app.use('/', express.static('./.prod/'));
 
+app.use('/bullsncows.png', express.static('./'));
+
 app.post('/points', (req, res) => {
   const userId = req.body.userId;
   const points = req.body.points;
