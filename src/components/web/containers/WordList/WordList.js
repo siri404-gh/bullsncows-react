@@ -60,7 +60,7 @@ const mapDispatchToProps = (dispatch) => ({
         method: 'share',
         display: 'popup',
         href: 'https://bullsncows-firebase.herokuapp.com/',
-        quote: 'My score: ' + num,
+        quote: 'My score: ' + num +'. :D :B',
         picture: 'https://bullsncows-firebase.herokuapp.com/static/bulls.png',
         redirect_uri: 'https://bullsncows-firebase.herokuapp.com/'
       }, function(response){});
