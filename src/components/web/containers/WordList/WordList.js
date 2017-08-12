@@ -55,13 +55,14 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(addNewWord());
     dispatch(addLastWord(word));
     dispatch(getUsers());
-    FB.ui({
-      method: 'share',
-      link: 'https://bullsncows-firebase.herokuapp.com/',
-      title: 'I scored ' + num + ' points.',
-      picture: 'https://bullsncows-firebase.herokuapp.com/static/bullsncows.png'
-    }, function(response){});
-
+    if( num % 2 === 0 ) {
+      FB.ui({
+        method: 'share',
+        link: 'https://bullsncows-firebase.herokuapp.com/',
+        title: 'I scored ' + num + ' points.',
+        picture: 'https://bullsncows-firebase.herokuapp.com/static/bullsncows.png'
+      }, function(response){});
+    }
   },
 });
 

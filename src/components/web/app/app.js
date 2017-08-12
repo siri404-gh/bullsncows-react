@@ -43,7 +43,7 @@ class App extends Component {
 const LeaderBoard = ({ users, uid }) => {
   users.sort((a, b) => b.points - a.points);
   return (
-    <div className={Styles.leaderBoard}>
+    <div className={Styles.leaderBoard + ' ' + Styles.borderLeft}>
       <div className='row'><h6 className={Styles.center}> LeaderBoard </h6></div>
       {users.map((user, i) => {
         let bold = false;
@@ -51,7 +51,7 @@ const LeaderBoard = ({ users, uid }) => {
         return (
           <div key={i} className='row'>
             <div className='col-xs-1'> {i + 1} </div>
-            <div className='col-xs-9'>
+            <div className='col-xs-8'>
               <span className={bold ? Styles.bold : Styles.normal}>{user.displayName.substr(0, 25)}</span>
             </div>
             <div className='col-xs-1'> {user.points} </div>
@@ -78,10 +78,10 @@ const Board = ({ users, uid }) => (
       </div>
     </div>
     <div className='row'>
-      <div className={'col-md-7 ' + Styles.borderTop + ' ' + Styles.borderRight}>
+      <div className={'col-sm-7 ' + Styles.borderTop}>
         <WordList />
       </div>
-      <div className={'col-md-5 ' + Styles.borderTop}>
+      <div className={'col-sm-5 ' + Styles.borderTop}>
         <LeaderBoard users={users} uid={uid} />
       </div>
     </div>
