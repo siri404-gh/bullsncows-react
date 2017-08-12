@@ -44,7 +44,7 @@ const LeaderBoard = ({ users, uid }) => {
   users.sort((a, b) => b.points - a.points);
   return (
     <div className={Styles.leaderBoard + ' ' + Styles.borderLeft}>
-      <div className='row'><h6 className={Styles.center}> LeaderBoard </h6></div>
+      <div className='row'><h6 className={Styles.center + ' ' + Styles.bold}> LeaderBoard </h6></div>
       {users.map((user, i) => {
         let bold = false;
         if (user.user === uid) bold = true;
@@ -80,6 +80,7 @@ const Board = ({ users, uid }) => (
     <div className='row'>
       <div className={'col-sm-7 ' + Styles.borderTop}>
         <WordList />
+        <div className={Styles.clearFix}></div>
       </div>
       <div className={'col-sm-5 ' + Styles.borderTop}>
         <LeaderBoard users={users} uid={uid} />
@@ -95,7 +96,7 @@ const Rules = () => (
     <div className='col-sm-1'>
     </div>
     <div className='col-sm-10'>
-      <h6> How to play: </h6>
+      <h6 className={Styles.bold}> How to play: </h6>
       Guess the 4 letter word. All letters are different.<br />
       Right letter, wrong place is a "cow." Right letter, right place is a "bull."
     </div>

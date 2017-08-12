@@ -13,7 +13,7 @@ import Styles from './WordList.less';
 const WordList = ({ words, theWord, resetWords, userId, points, lastword, displayName }) => {
   return (
     <div className={Styles.WordList + ' col-xs-12'}>
-      <div className='row'><h6 className={Styles.center}> Your Guesses </h6></div>
+      <div className='row'><h6 className={Styles.center + ' ' + Styles.bold}> Your Guesses </h6></div>
       {words.map((word) =>
         <div key={word.id} className={Styles.wordPoints}>
           <div className='col-xs-6'>
