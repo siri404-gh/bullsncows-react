@@ -4,7 +4,7 @@ const Merge = require('webpack-merge');
 const CommonConfig = require('./webpack.common.js');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const variables = require('../variables');
+const variables = require('./variables');
 
 module.exports = Merge(CommonConfig, {
   entry: {

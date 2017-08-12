@@ -1,7 +1,7 @@
 module.exports = {
   entry: './index.js',
   dist: './.dist',
-  'prod': './.prod',
+  prod: './.prod',
   bundle: 'bundle.js',
   port: process.env.PORT || 5000,
   devPort: 4000,

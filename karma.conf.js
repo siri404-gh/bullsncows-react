@@ -1,4 +1,4 @@
-var webpackConfig = require('./webpack/webpack.dev.js');
+var webpackConfig = require('./webpack.dev.js');
 var variables = require('./variables');
 
 module.exports = function (config) {
