@@ -6,9 +6,9 @@ var bodyParser = require('body-parser');
 var morgan = require('morgan')
 
 var config = {
-  apiKey: "AIzaSyCyWyJYEXpl8rxyedqxRRuVGg4cc423nnU",
-  authDomain: "reactultimate.firebaseapp.com",
-  databaseURL: "https://reactultimate.firebaseio.com",
+  apiKey: "AIzaSyCiyJWUbaor6SvG3nhO2Eg7bI6b5SWRY3Y",
+  authDomain: "bullsncows-3d0f8.firebaseapp.com",
+  databaseURL: "https://bullsncows-3d0f8.firebaseio.com/",
   storageBucket: "bucket.appspot.com"
 };
 
