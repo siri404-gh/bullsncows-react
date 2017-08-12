@@ -20,11 +20,11 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 
-app.use(morgan('combined'))
+app.use(morgan('tiny'));
 
 app.use('/', express.static('./.prod/'));
 
-app.use('/bullsncows.png', express.static('./'));
+app.use('/static', express.static('images'));
 
 app.post('/points', (req, res) => {
   const userId = req.body.userId;
