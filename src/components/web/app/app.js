@@ -40,49 +40,27 @@ class App extends Component {
   }
 };
 
-const LeaderBoard = ({ users, uid }) => {
-  users.sort((a, b) => b.points - a.points);
-  return (
-    <div className={Styles.leaderBoard + ' ' + Styles.borderLeft}>
-      <div className='row'><h6 className={Styles.center + ' ' + Styles.bold}> LeaderBoard </h6></div>
-      {users.map((user, i) => {
-        let bold = false;
-        if (user.user === uid) bold = true;
-        return (
-          <div key={i} className={Styles.borderBottom + ' row'}>
-            <div className='col-xs-1'> {i + 1} </div>
-            <div className='col-xs-8'>
-              <span className={bold ? Styles.bold : Styles.normal}>{user.displayName.substr(0, 25)}</span>
-            </div>
-            <div className='col-xs-1'> {user.points} </div>
-          </div>
-        )
-      }
-      )}
-    </div>
-  )
-};
-
 const Board = ({ users, uid }) => (
   <div>
-    <div className='row'>
+    <div>
       <div className='col-xs-12'>
-        <div className={'row ' + Styles.rowPadding}>
+        <div className={Styles.rowPadding}>
           <img className={Styles.headerImg} src={bulls} />
           <img className={Styles.headerImg} src={cows} />
         </div>
-        <div className={Styles.borderTop + ' ' + Styles.rowPadding}>
+        <div className={Styles.rowPadding}>
           <TotalPoints />
         </div>
         <AddWord />
       </div>
     </div>
-    <div className='row'>
-      <div className={'col-sm-7 ' + Styles.borderTop}>
+        <div className={Styles.clearFix}></div>
+    <div>
+      <div className={'col-sm-6 ' + Styles.borderTop}>
         <WordList />
         <div className={Styles.clearFix}></div>
       </div>
-      <div className={'col-sm-5 ' + Styles.borderTop}>
+      <div className={'col-sm-6 ' + Styles.borderTop}>
         <LeaderBoard users={users} uid={uid} />
       </div>
     </div>
@@ -90,6 +68,30 @@ const Board = ({ users, uid }) => (
     {/* Love this game? <a href='https://www.facebook.com/dialog/share?app_id=111074542870113&display=popup&quote=I%20scored%20100%20points&href=https%3A%2F%2Fbullsncows-firebase.herokuapp.com&redirect_uri=https://bullsncows-firebase.herokuapp.com/'>Share it</a> ! */}
   </div >
 );
+
+const LeaderBoard = ({ users, uid }) => {
+  users.sort((a, b) => b.points - a.points);
+  return (
+    <div className={Styles.leaderBoard + ' ' + Styles.borderLeft}>
+      <div><h6 className={Styles.center + ' ' + Styles.bold}> LeaderBoard </h6></div>
+      {users.map((user, i) => {
+        let bold = false;
+        if (user.user === uid) bold = true;
+        return (
+          <div key={i} className={Styles.borderBottom}>
+            <div className='col-xs-1'> {i + 1} </div>
+            <div className='col-xs-8'>
+              <span className={bold ? Styles.bold : Styles.normal}>{user.displayName.substr(0, 25)}</span>
+            </div>
+            <div className='col-xs-1'> {user.points} </div>
+            <div className={Styles.clearFix}></div>
+          </div>
+        )
+      }
+      )}
+    </div>
+  )
+};
 
 const Rules = () => (
   <div className={Styles.borderTop + ' col-xs-12'}>
