@@ -59,10 +59,10 @@ const mapDispatchToProps = (dispatch) => ({
       FB.ui({
         method: 'share',
         display: 'popup',
-        href: 'https://bullsncows-firebase.herokuapp.com/',
+        href: 'https://bullsncows-3d0f8.firebaseapp.com/',
         quote: 'My score: ' + num,
         picture: 'https://bullsncows-firebase.herokuapp.com/static/bulls.png',
-        redirect_uri: 'https://bullsncows-firebase.herokuapp.com/'
+        redirect_uri: 'https://bullsncows-3d0f8.firebaseapp.com/'
       }, function(response){});
     }
   },

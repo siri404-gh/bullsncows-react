@@ -1,9 +1,8 @@
-const express = require('express');
-const app = express();
-const variables = require('../variables');
+const functions = require('firebase-functions');
 const firebase = require('firebase');
-var bodyParser = require('body-parser');
-var morgan = require('morgan')
+
+// // Create and Deploy Your First Cloud Functions
+// // https://firebase.google.com/docs/functions/write-firebase-functions
 
 var config = {
   apiKey: "AIzaSyCiyJWUbaor6SvG3nhO2Eg7bI6b5SWRY3Y",
@@ -15,18 +14,7 @@ var config = {
 firebase.initializeApp(config);
 var database = firebase.database();
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-  extended: true
-}));
-
-app.use(morgan('tiny'));
-
-app.use('/', express.static('./.prod/'));
-
-app.use('/static', express.static('images'));
-
-app.post('/points', (req, res) => {
+exports.points = functions.https.onRequest((req, res) => {
   const userId = req.body.userId;
   const points = req.body.points;
   const words = req.body.lastword;
@@ -41,8 +29,23 @@ app.post('/points', (req, res) => {
   });
 });
 
-app.get('/details', (req, res) => {
-  const userId = req.params.userId;
+exports.users = functions.https.onRequest((req, res) => {
+  return firebase.database().ref('/users/')
+  .once('value').then(function (snapshot) {
+    try {
+      var users = snapshot.val();
+      res.send({
+        users
+      });
+    }
+    catch (e) {
+      console.log('there has been an error', e);
+    }
+  });
+});
+
+exports.details = functions.https.onRequest((req, res) => {
+  const userId = req.params[0].split('/').pop();
   return firebase.database().ref('/users/' + userId)
     .once('value').then(function (snapshot) {
       try {
@@ -58,21 +61,3 @@ app.get('/details', (req, res) => {
       }
     });
 });
-
-app.get('/users', (req, res) => {
-  return firebase.database().ref('/users/')
-    .once('value').then(function (snapshot) {
-      try {
-        var users = snapshot.val();
-        res.send({
-          users
-        });
-      }
-      catch (e) {
-        console.log('there has been an error', e);
-      }
-    });
-});
-
-app.listen(variables.port);
-console.log(`SERVER: Listening on port ${variables.port}`);

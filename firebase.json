@@ -1,5 +1,19 @@
 {
   "hosting": {
-    "public": ".dist"
+    "public": ".dist",
+    "rewrites": [
+      {
+        "source": "/points",
+        "function": "points"
+      },
+      {
+        "source": "/users",
+        "function": "users"
+      },
+      {
+        "source": "/details/**",
+        "function": "details"
+      }
+    ]
   }
 }
