@@ -55,13 +55,13 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(addNewWord());
     dispatch(addLastWord(word));
     dispatch(getUsers());
-    if( num % 2 === 0 ) {
+    if( (lastword.length+1) % 5 === 0 ) {
       FB.ui({
         method: 'share',
         display: 'popup',
         href: 'https://bullsncows-3d0f8.firebaseapp.com/',
-        quote: 'My score: ' + num,
-        picture: 'https://bullsncows-firebase.herokuapp.com/static/bulls.png',
+        quote: 'My score after solving ' + (lastword.length+1) +' words: ' + num,
+        picture: 'https://bullsncows-3d0f8.firebaseapp.com/889bff3b5c52e2d4e3010b5b853c7b2f.png',
         redirect_uri: 'https://bullsncows-3d0f8.firebaseapp.com/'
       }, function(response){});
     }

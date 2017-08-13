@@ -5,6 +5,7 @@ import WordList from '../containers/WordList/WordList';
 import TotalPoints from '../containers/TotalPoints/TotalPoints';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Styles from './app.less';
+import bullsncows from './../../../../images/bullsncows.png';
 import bulls from './../../../../images/bulls.png';
 import cows from '../../../../images/cows.png';
 import Login from '../login/login';
