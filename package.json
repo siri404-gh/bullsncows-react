@@ -20,7 +20,7 @@
     "commit": "git-cz",
     "heroku": "yarn build:web:prod && yarn start:web:prod",
     "travis": "yarn test:web && yarn test:mobile && yarn build:web:prod && yarn bundle:mobile && yarn firebase",
-    "firebase": "./node_modules/.bin/webpack --env=firebase && ./node_modules/.bin/firebase deploy --token 1/kBe-pgETQZN80DRkvHIRDS9mV7ItsxnTdj90zlb3mTA"
+    "firebase": "cd functions && npm i && cd .. && ./node_modules/.bin/webpack --env=firebase && ./node_modules/.bin/firebase deploy --token 1/kBe-pgETQZN80DRkvHIRDS9mV7ItsxnTdj90zlb3mTA"
   },
   "dependencies": {
     "axios": "^0.16.2",
