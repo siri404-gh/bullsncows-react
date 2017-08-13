@@ -49,7 +49,7 @@ const LeaderBoard = ({ users, uid }) => {
         let bold = false;
         if (user.user === uid) bold = true;
         return (
-          <div key={i} className='row'>
+          <div key={i} className={Styles.borderBottom + ' row'}>
             <div className='col-xs-1'> {i + 1} </div>
             <div className='col-xs-8'>
               <span className={bold ? Styles.bold : Styles.normal}>{user.displayName.substr(0, 25)}</span>
