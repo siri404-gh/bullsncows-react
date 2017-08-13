@@ -45,7 +45,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => ({
   add: (word) => {
-    dispatch(addWord(word));
+    dispatch(addWord(word.toLowerCase()));
   },
 });
 
