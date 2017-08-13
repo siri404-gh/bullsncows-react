@@ -17,7 +17,9 @@ const rank = (users, uid) => {
 
 const TotalPoints = ({ user, uid, points, attempts, guesses, lastword, users }) => {
   return (
-    <div className={Styles.totalPoints}>
+    <div className="panel-group">
+    <div className="panel panel-warning">
+      <div className="panel-heading">
       Hello {user},
       <b> Points</b> : {points},
       <b> Words</b>: {attempts},
@@ -25,6 +27,8 @@ const TotalPoints = ({ user, uid, points, attempts, guesses, lastword, users }) 
       {lastword.length > 0 && <LastWord word={lastword[lastword.length - 1]} />},
       <b> Average</b>: {points/attempts || 0}
       <b> Rank</b>: {rank(users, uid)}
+      </div>
+    </div>
     </div>
   )
 };

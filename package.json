@@ -3,11 +3,12 @@
   "version": "0.0.3",
   "private": true,
   "scripts": {
-    "cleanup": "./node_modules/.bin/rimraf android/app/src/main/assets ./.prod",
+    "cleanup": "watchman watch-del-all && ./node_modules/.bin/rimraf android/app/src/main/assets ./.prod ./.dist ./.coverage TMPDIR/react-* android ios && rm -rf ./node_modules && yarn",
+    "eject": "react-native eject",
     "bundle": "react-native bundle --platform android --dev false --entry-file index.android.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res/",
-    "bundle:mobile": "yarn cleanup && mkdir android/app/src/main/assets && yarn bundle && yarn cleanup",
-    "start:mobile": "node node_modules/react-native/local-cli/cli.js start -- --reset-cache",
-    "start:mobile:dev": "react-native run-android && react-native run-ios",
+    "bundle:mobile": "yarn cleanup && yarn eject && mkdir android/app/src/main/assets && yarn bundle && yarn cleanup",
+    "start:mobile:server": "node node_modules/react-native/local-cli/cli.js start -- --reset-cache",
+    "start:mobile:dev": "react-native run-android",
     "start:mobile:dev:ios": "react-native run-ios",
     "test:mobile": "jest",
     "start:web:dev": "./node_modules/.bin/webpack-dev-server --env=dev --progress --profile --colors --open",
@@ -19,8 +20,8 @@
     "lint": "./node_modules/.bin/eslint src/",
     "commit": "git-cz",
     "heroku": "yarn build:web:prod && yarn start:web:prod",
-    "travis": "yarn test:web && yarn test:mobile && yarn build:web:prod && yarn bundle:mobile && yarn firebase",
-    "firebase": "cd functions && npm i && cd .. && ./node_modules/.bin/webpack --env=firebase && ./node_modules/.bin/firebase deploy --token 1/kBe-pgETQZN80DRkvHIRDS9mV7ItsxnTdj90zlb3mTA"
+    "firebase": "cd functions && npm i && cd .. && ./node_modules/.bin/webpack --env=firebase && ./node_modules/.bin/firebase deploy --token 1/kBe-pgETQZN80DRkvHIRDS9mV7ItsxnTdj90zlb3mTA",
+    "travis": "yarn test:web && yarn test:mobile && yarn build:web:prod && yarn bundle:mobile && yarn firebase"
   },
   "dependencies": {
     "axios": "^0.16.2",
