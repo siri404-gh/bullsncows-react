@@ -3,7 +3,7 @@
   "version": "0.0.3",
   "private": true,
   "scripts": {
-    "cleanup": "watchman watch-del-all && ./node_modules/.bin/rimraf android/app/src/main/assets ./.prod ./.dist ./.coverage TMPDIR/react-* android ios && rm -rf ./node_modules && yarn",
+    "cleanup": "./node_modules/.bin/rimraf android/app/src/main/assets ./.prod ./.dist ./.coverage TMPDIR/react-* android ios && rm -rf ./node_modules && yarn",
     "eject": "react-native eject",
     "bundle": "react-native bundle --platform android --dev false --entry-file index.android.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res/",
     "bundle:mobile": "yarn cleanup && yarn eject && mkdir android/app/src/main/assets && yarn bundle && yarn cleanup",
@@ -80,6 +80,7 @@
     "sugarss": "^1.0.0",
     "uglifyjs-webpack-plugin": "^0.4.6",
     "url-loader": "^0.5.9",
+    "watchman": "^0.1.8",
     "webpack": "^3.4.1",
     "webpack-dev-server": "^2.6.1",
     "webpack-manifest-plugin": "^1.2.1",
