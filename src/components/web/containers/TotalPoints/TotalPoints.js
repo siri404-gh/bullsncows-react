@@ -18,14 +18,14 @@ const rank = (users, uid) => {
 const TotalPoints = ({ user, uid, points, attempts, guesses, lastword, users }) => {
   return (
     <div className="panel-group">
-    <div className="panel panel-warning">
+    <div className="panel panel-success">
       <div className="panel-heading">
       Hello {user},
-      <b> Points</b> : {points},
-      <b> Words</b>: {attempts},
-      <b> Guesses</b>: {guesses}
+      <b> Total Points</b> : {points},
+      <b> Total Words</b>: {attempts},
+      {/* <b> Guesses</b>: {guesses}
       {lastword.length > 0 && <LastWord word={lastword[lastword.length - 1]} />},
-      <b> Average</b>: {points/attempts || 0}
+      <b> Average</b>: {points/attempts || 0} */}
       <b> Rank</b>: {rank(users, uid)}
       </div>
     </div>
