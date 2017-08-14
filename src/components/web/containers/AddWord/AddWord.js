@@ -20,8 +20,8 @@ const AddWord = ({ theWord, add, words }) => {
       }}>
         <div className="form-group">
           <div>
-            <div className='col-xs-3 col-sm-2 col-md-3'><label htmlFor="usr" className={Styles.guessString}> Guess: </label></div>
-            <div className='col-xs-9 col-sm-10 col-md-9'>
+            <div className='col-xs-4 col-sm-2 col-md-3'><label htmlFor="usr" className={Styles.guessString}> Guess: </label></div>
+            <div className='col-xs-8 col-sm-10 col-md-9'>
               <input type="text" id="usr" ref={node => input = node} type="text" maxLength={theWord.length} onKeyDown={populate} autoFocus className={'form-control ' + Styles.input} autoComplete="off" autoCorrect="off" autoCapitalize="none"/>
             </div>
             {/* <button type="submit" className='btn btn-secondary' onClick={() => {
