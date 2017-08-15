@@ -14,6 +14,7 @@ const WordList = ({ words, theWord, resetWords, userId, points, lastword, displa
   return (
     <div className={Styles.WordList + ' col-xs-12'}>
       <div><h6 className={Styles.center + ' ' + Styles.bold}> Your Guesses </h6></div>
+      {words.length === 0 && "Start with a random guess. Try 'abcd'."}
       {words.map((word) =>
         <div key={word.id} className={Styles.wordPoints}>
           <div className='col-xs-6'>
