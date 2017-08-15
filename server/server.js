@@ -41,7 +41,7 @@ app.post('/points', (req, res) => {
   });
 });
 
-app.get('/details', (req, res) => {
+app.get('/details/:userId', (req, res) => {
   const userId = req.params.userId;
   return firebase.database().ref('/users/' + userId)
     .once('value').then(function (snapshot) {

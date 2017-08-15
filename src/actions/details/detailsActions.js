@@ -4,9 +4,9 @@ import { addAllWords } from '../words/wordsActions';
 import { toggleLoading } from '../loading/loadingActions';
 
 export const getDetailsRoot = (getDetailsService, userId) => dispatch => {
+  dispatch(toggleLoading(true));
   return getDetailsService(userId)
     .then(response => {
-      dispatch(toggleLoading(true));
       dispatch({
         type: 'UPDATE_POINTS',
         points: response.data.points

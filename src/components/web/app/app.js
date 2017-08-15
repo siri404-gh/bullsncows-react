@@ -49,7 +49,7 @@ const Board = ({ users, uid }) => (
           <img className={Styles.headerImg} src={bulls} />
           <img className={Styles.headerImg} src={cows} />
         </div>
-        <div className={Styles.rowPadding}>
+        <div>
           <TotalPoints />
         </div>
         <AddWord />
@@ -57,13 +57,13 @@ const Board = ({ users, uid }) => (
     </div>
         <div className={Styles.clearFix}></div>
     <div>
-      <div className={'col-sm-12 ' + Styles.borderTop}>
+      <div className={'col-sm-6 ' + Styles.borderTop}>
         <WordList />
         <div className={Styles.clearFix}></div>
       </div>
-      {/* <div className={'col-sm-6 ' + Styles.borderTop}>
+      <div className={'col-sm-6 ' + Styles.borderTop}>
         <LeaderBoard users={users} uid={uid} />
-      </div> */}
+      </div>
     </div>
     <Rules />
     {/* Love this game? <a href='https://www.facebook.com/dialog/share?app_id=111074542870113&display=popup&quote=I%20scored%20100%20points&href=https%3A%2F%2Fbullsncows-firebase.herokuapp.com&redirect_uri=https://bullsncows-firebase.herokuapp.com/'>Share it</a> ! */}
@@ -81,10 +81,10 @@ const LeaderBoard = ({ users, uid }) => {
         return (
           <div key={i} className={Styles.borderBottom}>
             <div className='col-xs-1'> {i + 1} </div>
-            <div className='col-xs-8'>
-              <span className={bold ? Styles.bold : Styles.normal}>{user.displayName.substr(0, 25)}</span>
+            <div className='col-xs-6'>
+              <span className={bold ? Styles.bold : Styles.normal}>{user.displayName.split(' ').shift()}</span>
             </div>
-            <div className='col-xs-1'> {user.points} </div>
+            <div className='col-xs-4'> {user.points + ' ' +'(' + user.words.length + ')'} </div>
             <div className={Styles.clearFix}></div>
           </div>
         )
