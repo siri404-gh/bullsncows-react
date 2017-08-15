@@ -54,7 +54,6 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(updatePoints(num, userId, [...lastword, word], displayName));
     dispatch(addNewWord());
     dispatch(addLastWord(word));
-    dispatch(getUsers());
     if( (lastword.length+1) % 5 === 0 ) {
       FB.ui({
         method: 'share',
