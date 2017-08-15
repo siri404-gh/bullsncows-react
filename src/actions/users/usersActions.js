@@ -3,9 +3,9 @@ import { partial } from '../../utils/utils';
 import { toggleLoading } from '../loading/loadingActions';
 
 export const getUsersRoot = (getUsersService) => dispatch => {
+  dispatch(toggleLoading(true));
   return getUsersService()
     .then(response => {
-      dispatch(toggleLoading(true));
       var dataParsed = [];
       for (var user in response.data.users) {
         dataParsed.push({

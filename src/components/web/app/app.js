@@ -57,13 +57,13 @@ const Board = ({ users, uid }) => (
     </div>
         <div className={Styles.clearFix}></div>
     <div>
-      <div className={'col-sm-6 ' + Styles.borderTop}>
+      <div className={'col-sm-12 ' + Styles.borderTop}>
         <WordList />
         <div className={Styles.clearFix}></div>
       </div>
-      <div className={'col-sm-6 ' + Styles.borderTop}>
+      {/* <div className={'col-sm-6 ' + Styles.borderTop}>
         <LeaderBoard users={users} uid={uid} />
-      </div>
+      </div> */}
     </div>
     <Rules />
     {/* Love this game? <a href='https://www.facebook.com/dialog/share?app_id=111074542870113&display=popup&quote=I%20scored%20100%20points&href=https%3A%2F%2Fbullsncows-firebase.herokuapp.com&redirect_uri=https://bullsncows-firebase.herokuapp.com/'>Share it</a> ! */}
