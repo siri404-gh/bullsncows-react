@@ -7,21 +7,27 @@ import { updatePoints } from '../../../../actions/points/pointsActions';
 import { addNewWord } from '../../../../actions/theWord/theWordActions';
 import { addLastWord } from '../../../../actions/lastword/lastwordActions';
 import { getUsers } from '../../../../actions/users/usersActions';
+import { setLevel } from '../../../../actions/level/levelActions';
+import { gameUrl, wordType } from '../../../../../variables';
 
 import Styles from './WordList.less';
+const letterType = wordType === 'number' ? 'digit' : 'letter';
 
 const WordList = ({ words, theWord, resetWords, userId, points, lastword, displayName }) => {
+  var k = 'abcdefghijklmnopqrstuvwxyz';
+  var j = '1234567890';
+  const a = wordType === 'number' ? j.slice(0, theWord.length) : k.slice(0, theWord.length);
   return (
-    <div className={Styles.WordList + ' col-xs-12'}>
+    <div className={Styles.WordList}>
       <div><h6 className={Styles.center + ' ' + Styles.bold}> Your Guesses </h6></div>
-      {words.length === 0 && "Start with a random guess. Try 'abcd'."}
+      <i>{words.length === 0 && "Start with a random guess. Try '" + a+"'"}</i>
       {words.map((word) =>
         <div key={word.id} className={Styles.wordPoints}>
-          <div className='col-xs-6'>
+          <div className='col-xs-5'>
             <SingleWord
               word={word.word} />
           </div>
-          <div className='col-xs-6'>
+          <div className='col-xs-7'>
             <Points
               word={word.word}
               theWord={theWord}
@@ -51,18 +57,20 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => ({
   resetWords: (num, userId, lastword, word, displayName) => {
+    let level = Math.floor(num/500)+1;
     dispatch(resetWords());
-    dispatch(updatePoints(num, userId, [...lastword, word], displayName));
-    dispatch(addNewWord());
+    dispatch(updatePoints(num, userId, [...lastword, word], displayName, level));
+    dispatch(setLevel(level));
+    dispatch(addNewWord(level));
     dispatch(addLastWord(word));
     if( (lastword.length+1) % 3 === 0 ) {
       FB.ui({
         method: 'share',
         display: 'popup',
-        href: 'https://bullsncows-3d0f8.firebaseapp.com/',
-        quote: 'My score after solving ' + (lastword.length+1) +' words: ' + num,
+        href: gameUrl,
+        quote: 'My score after solving ' + (lastword.length+1) + ' ' +wordType +'s: ' + num,
         picture: 'https://bullsncows-3d0f8.firebaseapp.com/889bff3b5c52e2d4e3010b5b853c7b2f.png',
-        redirect_uri: 'https://bullsncows-3d0f8.firebaseapp.com/'
+        redirect_uri: gameUrl
       }, function(response){});
     }
   },

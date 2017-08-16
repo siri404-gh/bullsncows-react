@@ -1,18 +1,11 @@
-@import url('https://fonts.googleapis.com/css?family=Lato')
-
 body
   background: #e4e4e4
   font-family: Tahoma
-
-ul
-  padding: 0
-
-.mainBox
-  padding: 10px
   font-size: 12px
+
+.app
+  margin: 10px auto
   background: #ffffff
-  border: solid 0px #e4e4e4
-  margin: 20px 0
   -moz-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3)
   -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3)
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3)
@@ -21,16 +14,13 @@ ul
   border-radius: 5px
   border-top: solid 3px #0076ff
 
-.wrapper
-  margin: auto
+.center
+  text-align: center
+  padding: 10px
 
 .headerImg
   height: 70px
   display: inline
-
-.center
-  text-align: center
-  padding: 10px
 
 .borderTop
   border-top: solid 1px #e4e4e4
@@ -39,7 +29,6 @@ ul
   border-left: solid 1px #e4e4e4
 
 .borderBottom
-  padding-bottom: 2px
   border-bottom: solid 1px #e4e4e4
 
 .borderRight
@@ -48,25 +37,39 @@ ul
 .leaderBoard
   font-size: 10px
   text-align: left
-  padding: 10px
-  min-height: 200px
-  border:solid 1px black
+  padding: 0 0 10px 10px
+  min-height: 100px
+  max-width: 300px
+  margin-left: auto
+  margin-right: auto
 
 .bold
   font-weight: bold
+  padding: 10px 0
+  margin: 0
+  color: black
 
 .normal
   font-weight: normal
 
 .rowPadding
-  padding-top: 10px
-  padding-bottom: 10px
+  padding: 10px 0
 
 @media (max-width: 768px)
   .borderLeft
     border: none
-  .leaderBoard
-    min-height: 0
 
 .clearFix
   clear: both
+
+.rules
+  test-align: justify
+  font-size: 10px
+
+.centerHor
+  margin: auto
+
+@media (min-width: 400px) and (max-width: 767px)
+  .leaderBoard
+    margin-left: auto
+    margin-right: auto

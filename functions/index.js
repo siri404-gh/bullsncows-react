@@ -19,11 +19,13 @@ exports.points = functions.https.onRequest((req, res) => {
   const points = req.body.points;
   const words = req.body.lastword;
   const displayName = req.body.displayName;
+  const level = req.body.level;
 
   return firebase.database().ref('users/' + userId).set({
     points,
     words,
-    displayName
+    displayName,
+    level
   }).then(function (response) {
     res.send(response);
   });
@@ -51,9 +53,11 @@ exports.details = functions.https.onRequest((req, res) => {
       try {
         var points = snapshot.val().points;
         var words = snapshot.val().words;
+        var level = snapshot.val().level;
         res.send({
           points,
-          words
+          words,
+          level
         });
       }
       catch (e) {

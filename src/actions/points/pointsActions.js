@@ -3,9 +3,9 @@ import { partial } from '../../utils/utils';
 import { getUsers } from '../users/usersActions';
 import { toggleLoading } from '../loading/loadingActions';
 
-export const updatePointsRoot = (updatePoints, points, userId, lastword, displayName) => dispatch => {
+export const updatePointsRoot = (updatePoints, points, userId, lastword, displayName, level) => dispatch => {
   dispatch(toggleLoading(true));
-  return updatePoints(points, userId, lastword, displayName)
+  return updatePoints(points, userId, lastword, displayName, level)
     .then(response => {
       dispatch({
         type: 'UPDATE_POINTS',
@@ -19,7 +19,6 @@ export const updatePointsRoot = (updatePoints, points, userId, lastword, display
         type: 'UPDATE_POINTS',
         points
       });
-      dispatch(toggleLoading(false));
     });
 };
 

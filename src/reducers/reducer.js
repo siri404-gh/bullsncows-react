@@ -7,6 +7,7 @@ import loadingReducer from './loading/loadingReducer';
 import userReducer from './user/userReducer';
 import lastwordReducer from './lastword/lastwordRecucer';
 import usersReducer from './users/usersReducer';
+import levelReducer from './level/levelReducer';
 
 const reducer = combineReducers({
   login: loginReducer,
@@ -16,7 +17,8 @@ const reducer = combineReducers({
   loading: loadingReducer,
   user: userReducer,
   lastword: lastwordReducer,
-  users: usersReducer
+  users: usersReducer,
+  level: levelReducer
 });
 
 export default reducer;

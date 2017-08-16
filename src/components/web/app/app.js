@@ -15,15 +15,15 @@ import { toggleLoading } from '../../../actions/loading/loadingActions';
 import { saveUser } from '../../../actions/user/userActions';
 import { getDetails } from '../../../actions/details/detailsActions';
 import { getUsers } from '../../../actions/users/usersActions';
-
+import { gameUrl, numOfLetters, wordType } from '../../../../variables';
+const letterType = wordType === 'number' ? 'digit' : 'letter';
 class App extends Component {
   render() {
-    const { login, loading, toggleLogin, toggleLoading, saveUser, getDetails, users, getUsers, uid } = this.props;
+    const { login, loading, toggleLogin, toggleLoading, saveUser, getDetails, users, getUsers, uid, points, lastword, level } = this.props;
     return (
-      <div>
-        <div className='col-md-2 col-lg-3'>
-        </div>
-        <div className={Styles.mainBox + ' col-xs-12 col-sm-12 col-md-8 col-lg-6 ' + Styles.center}>
+      <div className='container'>
+        <div className='col-sm-1 col-md-2 col-lg-3'></div>
+        <div className={Styles.app + ' col-xs-12 col-sm-10 col-md-8 col-lg-6 ' + Styles.center}>
           {!login && <Login
             loading={loading}
             toggleLogin={toggleLogin}
@@ -31,43 +31,40 @@ class App extends Component {
             saveUser={saveUser}
             getDetails={getDetails}
             getUsers={getUsers} />}
-          {login && !loading && <Board users={users} uid={uid} />}
+          {login && !loading && <Board users={users} uid={uid} points={points} lastword={lastword} level={level}/>}
           {loading && <Loader />}
         </div>
-        <div className='col-md-2 col-lg-3'>
-        </div>
+        <div className='col-sm-1 col-md-2 col-lg-3'></div>
       </div>
     );
   }
 };
 
-const Board = ({ users, uid }) => (
+const Board = ({ users, uid, points, lastword, level }) => (
   <div>
-    <div>
-      <div className='col-xs-12'>
-        <div className={Styles.rowPadding}>
-          <img className={Styles.headerImg} src={bulls} />
-          <img className={Styles.headerImg} src={cows} />
-        </div>
-        <div>
-          <TotalPoints />
-        </div>
-        <AddWord />
+    <div className='col-xs-12'>
+      <div className={Styles.rowPadding}>
+        <img className={Styles.headerImg} src={bulls} />
+        <img className={Styles.headerImg} src={cows} />
       </div>
+      <TotalPoints />
+      <AddWord />
     </div>
-        <div className={Styles.clearFix}></div>
+    <div className={Styles.clearFix}></div>
     <div>
-      <div className={'col-sm-12 ' + Styles.borderTop}>
+      <div className={Styles.borderTop + ' col-sm-12 ' +Styles.center + ' ' + Styles.centerHor}>
         <WordList />
         <div className={Styles.clearFix}></div>
       </div>
-      {/* <div className={'col-sm-6 ' + Styles.borderTop}>
+      {/* <div className={Styles.borderTop + ' col-sm-6'}>
         <LeaderBoard users={users} uid={uid} />
+        <div className={Styles.clearFix}></div>
       </div> */}
     </div>
-    <Rules />
-    {/* Love this game? <a href='https://www.facebook.com/dialog/share?app_id=111074542870113&display=popup&quote=I%20scored%20100%20points&href=https%3A%2F%2Fbullsncows-firebase.herokuapp.com&redirect_uri=https://bullsncows-firebase.herokuapp.com/'>Share it</a> ! */}
-  </div >
+    <Rules level={level}/>
+    <div className={Styles.clearFix}></div>
+    Like this game? <a href={'https://www.facebook.com/dialog/share?app_id=111074542870113&display=popup&quote=Level:%20'+level+',%20Total%20'+wordType.charAt(0).toUpperCase()+wordType.slice(1)+'s:%20' + lastword.length + ',%20Total%20Points:%20' + points + '&&href='+encodeURIComponent(gameUrl)+'&redirect_uri='+encodeURIComponent(gameUrl)}>Share it</a> !
+  </div>
 );
 
 const LeaderBoard = ({ users, uid }) => {
@@ -84,24 +81,22 @@ const LeaderBoard = ({ users, uid }) => {
             <div className='col-xs-6'>
               <span className={bold ? Styles.bold : Styles.normal}>{user.displayName.split(' ').shift()}</span>
             </div>
-            <div className='col-xs-4'> {user.points + ' ' +'(' + user.words.length + ')'} </div>
+            <div className='col-xs-4'> {user.points + ' ' + '(' + user.words.length + ')'} </div>
             <div className={Styles.clearFix}></div>
           </div>
         )
-      }
-      )}
+      })}
     </div>
-  )
+  );
 };
 
-const Rules = () => (
+const Rules = ({ level }) => (
   <div className={Styles.borderTop + ' col-xs-12'}>
     <div className='col-sm-1'>
     </div>
-    <div className='col-sm-10'>
+    <div className={Styles.rules + ' col-sm-10'}>
       <h6 className={Styles.bold}> How to play: </h6>
-      Guess the 4 letter word. All letters are different.<br />
-      Right letter, wrong place is a "cow." Right letter, right place is a "bull."
+      {'Goal is to find the '+ (level+2) + ' ' + letterType + ' ' + wordType + '. All '+ letterType + 's are different. Start with a random guess with unique '+wordType+'s. A bull indicates 1 '+ letterType +' in the guess present in the actual ' + wordType + ' and at the right place. A cow indicates 1 '+letterType +', but at the wrong place.'}
     </div>
     <div className='col-sm-1'>
     </div>
@@ -113,11 +108,14 @@ const mapStateToProps = state => {
     login: state.login,
     loading: state.loading,
     users: state.users,
-    uid: state.user.uid
+    uid: state.user.uid,
+    points: state.points,
+    lastword: state.lastword,
+    level: state.level
   };
 };
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
   toggleLogin: () => dispatch(toggleLogin()),
   toggleLoading: loading => dispatch(toggleLoading(loading)),
   saveUser: data => dispatch(saveUser(data)),
