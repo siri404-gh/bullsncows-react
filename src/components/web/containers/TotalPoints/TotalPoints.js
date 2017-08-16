@@ -24,8 +24,8 @@ const TotalPoints = ({ user, uid, points, attempts, guesses, lastword, users, le
         <div className="panel-heading">
           {user}:
           <b> Level</b>: {level},
-          <b> Total Points</b> : {points},
-          <b> Total {wordType}s</b>: {attempts},
+          <b> Points</b> : {points},
+          <b> Solved</b>: {attempts},
           {/* <b> Guesses</b>: {guesses}
           {lastword.length > 0 && <LastWord word={lastword[lastword.length - 1]} />},
           <b> Average</b>: {points/attempts || 0} */}

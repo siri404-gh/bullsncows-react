@@ -19,8 +19,10 @@ const WordList = ({ words, theWord, resetWords, userId, points, lastword, displa
   const a = wordType === 'number' ? j.slice(0, theWord.length) : k.slice(0, theWord.length);
   return (
     <div className={Styles.WordList}>
-      <div><h6 className={Styles.center + ' ' + Styles.bold}> Your Guesses </h6></div>
-      <i>{words.length === 0 && "Start with a random guess. Try '" + a+"'"}</i>
+      <div><h6 className={Styles.center + ' ' + Styles.bold}> {words.length > 0 && "Your Guesses"} </h6></div>
+      <p className={Styles.p}>{words.length === 0 && "Number of "+letterType+"s in this level: "+theWord.length}</p>
+      <p className={Styles.p}>{words.length === 0 && "Start with a random guess like '" + a+"'"}</p>
+      <p className={Styles.p}>{words.length === 0 && "See rules below."}</p>
       {words.map((word) =>
         <div key={word.id} className={Styles.wordPoints}>
           <div className='col-xs-5'>
