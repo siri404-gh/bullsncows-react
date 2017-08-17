@@ -12,6 +12,6 @@ const shuffle = o => {
 const getIndex = () => Math.floor(Math.random() * (words.length - 1)) + 1;
 
 const word = wordType === 'number'
-  ? (num = numOfLetters) => shuffle(numbers).slice(0, num).join('')
+  ? (num = numOfLetters) => btoa(shuffle(numbers).slice(0, num).join(''))
   : () => words[getIndex()];
 export default word;

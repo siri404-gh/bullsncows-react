@@ -16,6 +16,7 @@ const letterType = wordType === 'number' ? 'digit' : 'letter';
 const WordList = ({ words, theWord, resetWords, userId, points, lastword, displayName }) => {
   var k = 'abcdefghijklmnopqrstuvwxyz';
   var j = '1234567890';
+  theWord = atob(theWord);
   const a = wordType === 'number' ? j.slice(0, theWord.length) : k.slice(0, theWord.length);
   return (
     <div className={Styles.WordList}>

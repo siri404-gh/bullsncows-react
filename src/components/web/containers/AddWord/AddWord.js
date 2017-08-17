@@ -6,7 +6,7 @@ import _ from 'lodash';
 
 const AddWord = ({ theWord, add, words }) => {
   let input;
-
+  theWord = atob(theWord);
   const populate = () => {
     // console.log(words.pop());
   }
