@@ -20,14 +20,15 @@ import { gameUrl, numOfLetters, wordType } from '../../../../variables';
 const letterType = wordType === 'number' ? 'digit' : 'letter';
 const adStyle = {
   display: 'block',
-  marginTop: '10px',
-  marginBottom: '10px'
+  marginTop: '20px',
+  marginBottom: '10px',
+  textAlign: 'center'
 };
 class App extends Component {
   render() {
     const { login, loading, toggleLogin, toggleLoading, saveUser, getDetails, users, getUsers, uid, points, lastword, level } = this.props;
     return (
-      <div className='container'>
+      <div className={Styles.myContainer + ' container'}>
         <div className='col-sm-1 col-md-2 col-lg-3'></div>
         <div className={Styles.app + ' col-xs-12 col-sm-10 col-md-8 col-lg-6 ' + Styles.center}>
           {!login && <Login
