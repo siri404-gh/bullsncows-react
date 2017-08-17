@@ -58,14 +58,14 @@ const Board = ({ users, uid, points, lastword, level }) => (
     </div>
     <div className={Styles.clearFix}></div>
     <div>
-      <div className={Styles.borderTop + ' col-sm-12 ' + Styles.center + ' ' + Styles.centerHor}>
+      <div className={Styles.borderTop + ' col-sm-6 ' + Styles.centerHor}>
         <WordList />
         <div className={Styles.clearFix}></div>
       </div>
-      {/* <div className={Styles.borderTop + ' col-sm-6'}>
+      <div className={Styles.borderTop + ' col-sm-6'}>
         <LeaderBoard users={users} uid={uid} />
         <div className={Styles.clearFix}></div>
-      </div> */}
+      </div>
     </div>
     <Rules level={level} lastword={lastword} points={points}/>
     <div className={Styles.clearFix}></div>
