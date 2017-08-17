@@ -74,8 +74,7 @@ const Board = ({ users, uid, points, lastword, level }) => (
     <GoogleAd
       client="ca-pub-6831276331714408"
       slot="4438683283"
-      format="auto"
-    />
+      format="auto"/>
   </div>
 );
 

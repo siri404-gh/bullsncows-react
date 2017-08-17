@@ -50,7 +50,7 @@ const initApp = function (toggleLogin, toggleLoading, saveUser, getDetails, getU
   }, function (error) {
     console.log(error);
   });
-  toggleLoading(false);
+  // toggleLoading(false);
 };
 
 const Login = ({ loading, toggleLogin, toggleLoading, saveUser, getDetails, getUsers }) => {
