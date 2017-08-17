@@ -22,12 +22,13 @@ const AddWord = ({ theWord, add, words }) => {
         <div>
           <div className='col-xs-4 col-sm-2 col-md-3'><label htmlFor="usr" className={Styles.guessString}> Guess: </label></div>
           <div className='col-xs-8 col-sm-10 col-md-9'>
-            <input type="number"
+            <input type="text"
               id="usr"
               ref={node => input = node}
               maxLength={theWord.length}
               onKeyDown={populate}
               autoFocus
+              pattern="\d*"
               className={'form-control ' + Styles.input}
               autoComplete="off"
               autoCorrect="off"
