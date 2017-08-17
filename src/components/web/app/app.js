@@ -33,7 +33,12 @@ class App extends Component {
             saveUser={saveUser}
             getDetails={getDetails}
             getUsers={getUsers} />}
-          {login && !loading && <Board users={users} uid={uid} points={points} lastword={lastword} level={level} />}
+          {login && !loading && <Board
+            users={users}
+            uid={uid}
+            points={points}
+            lastword={lastword}
+            level={level} />}
           {loading && <Loader />}
         </div>
         <div className='col-sm-1 col-md-2 col-lg-3'></div>
