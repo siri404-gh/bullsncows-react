@@ -9,6 +9,7 @@ import { addLastWord } from '../../../../actions/lastword/lastwordActions';
 import { getUsers } from '../../../../actions/users/usersActions';
 import { setLevel } from '../../../../actions/level/levelActions';
 import { gameUrl, wordType } from '../../../../../variables';
+import base64 from 'base-64';
 
 import Styles from './WordList.less';
 const letterType = wordType === 'number' ? 'digit' : 'letter';
@@ -16,7 +17,7 @@ const letterType = wordType === 'number' ? 'digit' : 'letter';
 const WordList = ({ words, theWord, resetWords, userId, points, lastword, displayName }) => {
   var k = 'abcdefghijklmnopqrstuvwxyz';
   var j = '1234567890';
-  theWord = atob(theWord);
+  theWord = base64.decode(theWord);
   const a = wordType === 'number' ? j.slice(0, theWord.length) : k.slice(0, theWord.length);
   return (
     <div className={Styles.WordList}>

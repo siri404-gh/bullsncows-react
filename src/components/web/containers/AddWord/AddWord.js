@@ -3,10 +3,11 @@ import { connect } from 'react-redux';
 import { addWord } from '../../../../actions/words/wordsActions';
 import Styles from './AddWord.less';
 import _ from 'lodash';
+import base64 from 'base-64';
 
 const AddWord = ({ theWord, add, words }) => {
   let input;
-  theWord = atob(theWord);
+  theWord = base64.decode(theWord);
   const populate = () => {
     // console.log(words.pop());
   }
