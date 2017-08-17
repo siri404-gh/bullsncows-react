@@ -15,10 +15,7 @@ export const updatePointsRoot = (updatePoints, points, userId, lastword, display
       dispatch(toggleLoading(false));
     })
     .catch(response => {
-      dispatch({
-        type: 'UPDATE_POINTS',
-        points
-      });
+      console.log('points', response);
     });
 };
 

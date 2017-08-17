@@ -23,7 +23,7 @@ export const getUsersRoot = (getUsersService) => dispatch => {
       dispatch(toggleLoading(false));
     })
     .catch(response => {
-      console.log('e3', response);
+      console.log('users', response);
     });
 };
 export const getUsers = partial(getUsersRoot, Services.getUsers);

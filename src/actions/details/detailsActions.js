@@ -19,6 +19,7 @@ export const getDetailsRoot = (getDetailsService, userId) => dispatch => {
       dispatch(toggleLoading(false));
     })
     .catch(response => {
+      console.log('details', response);
     });
 };
 export const getDetails = partial(getDetailsRoot, Services.getDetails);
