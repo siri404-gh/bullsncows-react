@@ -20,8 +20,6 @@ import { gameUrl, numOfLetters, wordType } from '../../../../variables';
 const letterType = wordType === 'number' ? 'digit' : 'letter';
 const adStyle = {
   display: 'block',
-  marginTop: '20px',
-  marginBottom: '10px',
   textAlign: 'center'
 };
 class App extends Component {
