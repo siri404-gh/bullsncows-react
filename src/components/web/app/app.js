@@ -46,6 +46,7 @@ const Board = ({ users, uid, points, lastword, level }) => (
       <div className={Styles.rowPadding}>
         <img className={Styles.headerImg} src={bulls} />
         <img className={Styles.headerImg} src={cows} />
+        <span className={Styles.level}>{'Difficulty Level: ' + level}</span>
       </div>
       <TotalPoints />
       <AddWord />
@@ -96,7 +97,7 @@ const Rules = ({ level }) => (
     </div>
     <div className={Styles.rules + ' col-sm-10'}>
       <h6 className={Styles.bold}> How to play: </h6>
-      {'Goal is to find the '+ (level+2) + ' ' + letterType + ' ' + wordType + '. All '+ letterType + 's are different. Start with a random guess with unique '+letterType+'s. A bull indicates 1 '+ letterType +' in the guess present in the actual ' + wordType + ' and at the right place. A cow indicates 1 '+letterType +', but at the wrong place. Level increases every 500 points scored.'}
+      {'Goal is to find the '+ (level+2) + ' ' + letterType + ' ' + wordType + '. All ' + (level+2) + ' ' + letterType + 's are different. Start with a random guess with unique '+letterType+'s. A bull indicates 1 '+ letterType +' in the guess present in the actual ' + wordType + ' and at the right place. A cow indicates 1 at the wrong place. Difficulty Level increases every 500 points scored.'}
     </div>
     <div className='col-sm-1'>
     </div>

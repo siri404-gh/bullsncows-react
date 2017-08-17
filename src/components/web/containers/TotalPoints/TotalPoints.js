@@ -23,7 +23,7 @@ const TotalPoints = ({ user, uid, points, attempts, guesses, lastword, users, le
       <div className="panel panel-success">
         <div className="panel-heading">
           {user}:
-          <b> Level</b>: {level},
+          <span className={Styles.level}><b> Level</b>: {level},</span>
           <b> Points</b> : {points},
           <b> Solved</b>: {attempts},
           {/* <b> Guesses</b>: {guesses}
