@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
-
+import Styles from './GoogleAd.less';
 export default class GoogleAd extends Component {
-  // This code is ran when the component mounts
   componentDidMount() {
     (window.adsbygoogle = window.adsbygoogle || []).push({});
   }
 
   render() {
-    const { wrapperDivStyle, client, slot, format, style } = this.props;
+    const { client, slot, format } = this.props;
     return (
-      <div style={wrapperDivStyle} >
+      <div className={Styles.Ad}>
         <ins className="adsbygoogle"
           style={{ 'display': 'block' }}
           data-ad-client={client}

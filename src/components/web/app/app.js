@@ -18,10 +18,7 @@ import { getDetails } from '../../../actions/details/detailsActions';
 import { getUsers } from '../../../actions/users/usersActions';
 import { gameUrl, numOfLetters, wordType } from '../../../../variables';
 const letterType = wordType === 'number' ? 'digit' : 'letter';
-const adStyle = {
-  display: 'block',
-  textAlign: 'center'
-};
+
 class App extends Component {
   render() {
     const { login, loading, toggleLogin, toggleLoading, saveUser, getDetails, users, getUsers, uid, points, lastword, level } = this.props;
@@ -73,7 +70,6 @@ const Board = ({ users, uid, points, lastword, level }) => (
       client="ca-pub-6831276331714408"
       slot="4438683283"
       format="auto"
-      wrapperDivStyle={adStyle}
     />
   </div>
 );
