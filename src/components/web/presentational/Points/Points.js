@@ -11,6 +11,9 @@ export const Points = ({word, theWord, length, resetWords, userId, points, lastw
   });
 
   return (
-    <span className={cows > 0 || bulls > 0 ? Styles.green : Styles.normal}> Bulls: {bulls} Cows: {cows}</span>
+    <div>
+      <div className='col-xs-6'><span className={cows > 0 || bulls > 0 ? Styles.green : Styles.normal}> {bulls} </span></div>
+      <div className='col-xs-6'><span className={cows > 0 || bulls > 0 ? Styles.green : Styles.normal}> {cows} </span></div>
+    </div>
   );
 };

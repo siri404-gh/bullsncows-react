@@ -20,9 +20,10 @@ const WordList = ({ words, theWord, resetWords, userId, points, lastword, displa
   return (
     <div className={Styles.WordList}>
       <div><h6 className={Styles.center + ' ' + Styles.bold}> {words.length > 0 && "Your Guesses"} </h6></div>
-      <p className={Styles.p}>{words.length === 0 && "Number of "+letterType+"s in this level: "+theWord.length}</p>
-      <p className={Styles.p}>{words.length === 0 && "Start with a random guess like '" + a+"'"}</p>
+      <p className={Styles.p}>{words.length === 0 && "Number of " + letterType + "s in this level: " + theWord.length}</p>
+      <p className={Styles.p}>{words.length === 0 && "Start with a random guess like '" + a + "'"}</p>
       <p className={Styles.p}>{words.length === 0 && "See rules below."}</p>
+      {words.length > 0 && <Header />}
       {words.map((word) =>
         <div key={word.id} className={Styles.wordPoints}>
           <div className='col-xs-5'>
@@ -38,13 +39,23 @@ const WordList = ({ words, theWord, resetWords, userId, points, lastword, displa
               userId={userId}
               points={points}
               lastword={lastword}
-              displayName={displayName}/>
+              displayName={displayName} />
           </div>
         </div>
       )}
     </div>
   );
 };
+
+const Header = () => (
+  <div>
+    <div className='col-xs-5'>Guess</div>
+    <div className='col-xs-7'>
+      <div className='col-xs-6'>Bulls</div>
+      <div className='col-xs-6'>Cows</div>
+    </div>
+  </div>
+);
 
 const mapStateToProps = (state) => {
   return {
@@ -59,21 +70,21 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => ({
   resetWords: (num, userId, lastword, word, displayName) => {
-    let level = Math.floor(num/500)+1;
+    let level = Math.floor(num / 500) + 1;
     dispatch(resetWords());
     dispatch(updatePoints(num, userId, [...lastword, word], displayName, level));
     dispatch(setLevel(level));
     dispatch(addNewWord(level));
     dispatch(addLastWord(word));
-    if( (lastword.length+1) % 3 === 0 ) {
+    if ((lastword.length + 1) % 3 === 0) {
       FB.ui({
         method: 'share',
         display: 'popup',
         href: gameUrl,
-        quote: 'My score after solving ' + (lastword.length+1) + ' ' +wordType +'s: ' + num,
+        quote: 'My score after solving ' + (lastword.length + 1) + ' ' + wordType + 's: ' + num,
         picture: 'https://bullsncows-3d0f8.firebaseapp.com/889bff3b5c52e2d4e3010b5b853c7b2f.png',
         redirect_uri: gameUrl
-      }, function(response){});
+      }, function (response) { });
     }
   },
 });
