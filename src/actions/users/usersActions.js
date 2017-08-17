@@ -12,7 +12,8 @@ export const getUsersRoot = (getUsersService) => dispatch => {
           user: user,
           displayName: response.data.users[user].displayName,
           points: response.data.users[user].points,
-          words: response.data.users[user].words
+          words: response.data.users[user].words,
+          level: response.data.users[user].level
         });
       }
       dispatch({

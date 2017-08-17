@@ -31,7 +31,7 @@ class App extends Component {
             saveUser={saveUser}
             getDetails={getDetails}
             getUsers={getUsers} />}
-          {login && !loading && <Board users={users} uid={uid} points={points} lastword={lastword} level={level}/>}
+          {login && !loading && <Board users={users} uid={uid} points={points} lastword={lastword} level={level} />}
           {loading && <Loader />}
         </div>
         <div className='col-sm-1 col-md-2 col-lg-3'></div>
@@ -53,7 +53,7 @@ const Board = ({ users, uid, points, lastword, level }) => (
     </div>
     <div className={Styles.clearFix}></div>
     <div>
-      <div className={Styles.borderTop + ' col-sm-12 ' +Styles.center + ' ' + Styles.centerHor}>
+      <div className={Styles.borderTop + ' col-sm-12 ' + Styles.center + ' ' + Styles.centerHor}>
         <WordList />
         <div className={Styles.clearFix}></div>
       </div>
@@ -62,9 +62,14 @@ const Board = ({ users, uid, points, lastword, level }) => (
         <div className={Styles.clearFix}></div>
       </div> */}
     </div>
-    <Rules level={level}/>
+    <Rules level={level} />
     <div className={Styles.clearFix}></div>
-    Like this game? <a href={'https://www.facebook.com/dialog/share?app_id=111074542870113&display=popup&quote=Level:%20'+level+',%20Total%20'+wordType.charAt(0).toUpperCase()+wordType.slice(1)+'s:%20' + lastword.length + ',%20Total%20Points:%20' + points + '&&href='+encodeURIComponent(gameUrl)+'&redirect_uri='+encodeURIComponent(gameUrl)}>Share it</a> !
+    Like this game? <a target='_blank' href={'https://www.facebook.com/dialog/share?app_id=111074542870113&display=popup&quote=Level:%20' + level + ',%20Total%20' + wordType.charAt(0).toUpperCase() + wordType.slice(1) + 's:%20' + lastword.length + ',%20Total%20Points:%20' + points + '&&href=' + encodeURIComponent(gameUrl) + '&redirect_uri=' + encodeURIComponent(gameUrl)}>Share it</a> please :)
+    {/* <div className={Styles.center + " fb-send"} data-href="https://bullsncows-3d0f8.firebaseapp.com/" data-layout="button_count"></div>
+    <div className={Styles.center + " fb-share-button"}
+      data-href="https://bullsncows-3d0f8.firebaseapp.com"
+      data-layout="button_count">
+    </div> */}
   </div>
 );
 
@@ -76,13 +81,25 @@ const LeaderBoard = ({ users, uid }) => {
       {users.map((user, i) => {
         let bold = false;
         if (user.user === uid) bold = true;
+        if(!user.displayName || user.displayName === '') user.displayName = 'unknown';
+        const name = user.displayName.split(' ').shift().charAt(0).toUpperCase()+user.displayName.split(' ').shift().slice(1);
         return (
-          <div key={i} className={Styles.borderBottom}>
-            <div className='col-xs-1'> {i + 1} </div>
-            <div className='col-xs-6'>
-              <span className={bold ? Styles.bold : Styles.normal}>{user.displayName.split(' ').shift()}</span>
+          <div key={i} className={bold ? Styles.thisUser : Styles.notThisUser}>
+            <div className='col-xs-1'>
+              <span className={bold ? Styles.bold : Styles.normal}>{i + 1}</span>
             </div>
-            <div className='col-xs-4'> {user.points + ' ' + '(' + user.words.length + ')'} </div>
+            <div className='col-xs-4'>
+              <span className={bold ? Styles.bold : Styles.normal}>{name}</span>
+            </div>
+            <div className='col-xs-2'>
+              <span className={bold ? Styles.bold : Styles.normal}>{user.points}</span>
+            </div>
+            <div className='col-xs-1'>
+              <span className={bold ? Styles.bold : Styles.normal}>{user.level}</span>
+            </div>
+            <div className='col-xs-1'>
+              <span className={bold ? Styles.bold : Styles.normal}>{user.words.length}</span>
+            </div>
             <div className={Styles.clearFix}></div>
           </div>
         )
@@ -97,7 +114,7 @@ const Rules = ({ level }) => (
     </div>
     <div className={Styles.rules + ' col-sm-10'}>
       <h6 className={Styles.bold}> How to play: </h6>
-      {'Goal is to find the '+ (level+2) + ' ' + letterType + ' ' + wordType + '. All ' + (level+2) + ' ' + letterType + 's are different. Start with a random guess with unique '+letterType+'s. A bull indicates 1 '+ letterType +' in the guess present in the actual ' + wordType + ' and at the right place. A cow indicates 1 at the wrong place. Difficulty Level increases every 500 points scored.'}
+      {'Goal is to find the ' + (level + 2) + ' ' + letterType + ' ' + wordType + '. All ' + (level + 2) + ' ' + letterType + 's are different. Start with a random guess with unique ' + letterType + 's. A bull indicates 1 ' + letterType + ' in the guess present in the actual ' + wordType + ' and at the right place. A cow indicates 1 at the wrong place. Difficulty Level increases every 500 points scored.'}
     </div>
     <div className='col-sm-1'>
     </div>
