@@ -28,7 +28,7 @@ class App extends Component {
     return (
       <div className={Styles.myContainer + ' container'}>
         <div className='col-sm-1 col-md-2 col-lg-3'></div>
-        <div className={Styles.app + ' col-xs-12 col-sm-10 col-md-8 col-lg-6 ' + Styles.center}>
+        <div className={'col-xs-12 col-sm-10 col-md-8 col-lg-6 ' + Styles.center + ' ' +Styles.app}>
           {!login && <Login
             loading={loading}
             toggleLogin={toggleLogin}
@@ -114,7 +114,7 @@ const LeaderBoard = ({ users, uid }) => {
 };
 
 const Rules = ({ level, lastword, points }) => (
-  <div className={Styles.borderTop + ' col-xs-12 ' + Styles.borderBottom}>
+  <div className={Styles.borderTop + ' col-xs-12'}>
     <div className='col-sm-1'>
     </div>
     <div className={Styles.rules + ' col-sm-10'}>
