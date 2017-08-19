@@ -25,7 +25,7 @@ const uiConfig = {
 };
 
 const initApp = function (toggleLogin, toggleLoading, saveUser, getDetails, getUsers) {
-  toggleLoading(true);
+  // toggleLoading(true);
   firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
       user.getIdToken().then(function (accessToken) {
@@ -50,7 +50,7 @@ const initApp = function (toggleLogin, toggleLoading, saveUser, getDetails, getU
   }, function (error) {
     console.log(error);
   });
-  // toggleLoading(false);
+  toggleLoading(false);
 };
 
 const Login = ({ loading, toggleLogin, toggleLoading, saveUser, getDetails, getUsers }) => {

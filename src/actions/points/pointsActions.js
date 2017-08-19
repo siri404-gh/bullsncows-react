@@ -4,7 +4,7 @@ import { getUsers } from '../users/usersActions';
 import { toggleLoading } from '../loading/loadingActions';
 
 export const updatePointsRoot = (updatePoints, points, userId, lastword, displayName, level) => dispatch => {
-  dispatch(toggleLoading(true));
+  // dispatch(toggleLoading(true));
   return updatePoints(points, userId, lastword, displayName, level)
     .then(response => {
       dispatch({
@@ -12,7 +12,7 @@ export const updatePointsRoot = (updatePoints, points, userId, lastword, display
         points
       });
       dispatch(getUsers());
-      dispatch(toggleLoading(false));
+      // dispatch(toggleLoading(false));
     })
     .catch(response => {
       console.log('points', response);

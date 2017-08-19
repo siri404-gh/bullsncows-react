@@ -16,7 +16,7 @@ export const getDetailsRoot = (getDetailsService, userId) => dispatch => {
       dispatch(setLevel(response.data.level));
       dispatch(addAllWords(response.data.words));
       dispatch(addNewWord(response.data.level));
-      dispatch(toggleLoading(false));
+      // dispatch(toggleLoading(false));
     })
     .catch(response => {
       console.log('details', response);
