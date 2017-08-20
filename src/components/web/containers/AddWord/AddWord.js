@@ -22,7 +22,7 @@ const AddWord = ({ theWord, add, words }) => {
       }}>
         <div>
           <div className='col-xs-4 col-sm-2 col-md-3'><label htmlFor="usr" className={Styles.guessString}> Guess: </label></div>
-          <div className='col-xs-8 col-sm-10 col-md-9'>
+          <div className='col-xs-4 col-sm-8 col-md-6'>
             <input type="text"
               id="usr"
               ref={node => input = node}
@@ -35,11 +35,13 @@ const AddWord = ({ theWord, add, words }) => {
               autoCorrect="off"
               autoCapitalize="none" />
           </div>
-          {/* <button type="submit" className='btn btn-secondary' onClick={() => {
+          <div className='col-xs-4 col-sm-2 col-md-3'>
+            <button type="submit" className='btn btn-primary' onClick={() => {
               if (input.value === '') return false;
               add(input.value);
               input.value = '';
-            }}>Submit</button> */}
+            }}>Submit</button>
+          </div>
         </div>
       </form>
     </div>

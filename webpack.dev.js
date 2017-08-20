@@ -41,7 +41,8 @@ module.exports = Merge(CommonConfig, {
       metaDescription: variables.gameDescription,
       fbAppID: '111074542870113',
       title: 'Bulls & Cows '+variables.wordType.charAt(0).toUpperCase()+variables.wordType.slice(1)+' Challenge',
-      shortcutIcon: '/269e7b7d45bc9a194c8cc0dbf70909a7.png'
+      shortcutIcon: '/269e7b7d45bc9a194c8cc0dbf70909a7.png',
+      type: 'website'
     }),
     new ManifestPlugin({
       fileName: '.manifest.json',
