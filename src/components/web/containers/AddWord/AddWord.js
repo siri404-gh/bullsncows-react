@@ -13,6 +13,7 @@ const AddWord = ({ theWord, add, words }) => {
   }
 
   return (
+    <div className='row'>
     <div className={Styles.addWord + ' col-xs-12'}>
       <form onSubmit={(e) => {
         e.preventDefault();
@@ -21,8 +22,9 @@ const AddWord = ({ theWord, add, words }) => {
         input.value = '';
       }}>
         <div>
-          <div className='col-xs-4 col-sm-2 col-md-3'><label htmlFor="usr" className={Styles.guessString}> Guess: </label></div>
-          <div className='col-xs-4 col-sm-8 col-md-6'>
+          <div className='row'>
+          <div className='col-xs-3 col-sm-2 col-md-3'><label htmlFor="usr" className={Styles.guessString}> Guess: </label></div>
+          <div className='col-xs-6 col-sm-8 col-md-6'>
             <input type="text"
               id="usr"
               ref={node => input = node}
@@ -35,15 +37,17 @@ const AddWord = ({ theWord, add, words }) => {
               autoCorrect="off"
               autoCapitalize="none" />
           </div>
-          <div className='col-xs-4 col-sm-2 col-md-3'>
+          <div className='col-xs-3 col-sm-2 col-md-3'>
             <button type="submit" className='btn btn-primary' onClick={() => {
-              if (input.value === '') return false;
+              if (input.value === '' || _.uniqBy(input.value).length !== theWord.length) return false;
               add(input.value);
               input.value = '';
-            }}>Submit</button>
+            }}>Go</button>
+          </div>
           </div>
         </div>
       </form>
+    </div>
     </div>
   );
 };

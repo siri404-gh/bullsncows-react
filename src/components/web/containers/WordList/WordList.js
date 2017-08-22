@@ -24,7 +24,7 @@ const WordList = ({ words, theWord, resetWords, userId, points, lastword, displa
       <div><h6 className={Styles.center + ' ' + Styles.bold}> {words.length > 0 && "Your Guesses"} </h6></div>
       <p className={Styles.p}>{words.length === 0 && "Number of " + letterType + "s in this level: " + theWord.length}</p>
       <p className={Styles.p}>{words.length === 0 && "Start with a random guess like '" + a + "'"}</p>
-      <p className={Styles.p}>{words.length === 0 && "See rules below."}</p>
+      <p className={Styles.p}>{words.length === 0 && "See instructions below."}</p>
       {words.length > 0 && <Header />}
       {words.map((word) =>
         <div key={word.id} className={Styles.wordPoints}>

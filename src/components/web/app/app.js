@@ -83,23 +83,26 @@ const LeaderBoard = ({ users, uid }) => {
   return (
     <div className={Styles.leaderBoard + ' ' + Styles.borderLeft}>
       <div><h6 className={Styles.center + ' ' + Styles.bold}> LeaderBoard </h6></div>
-      <div className='col-xs-1'>
-        <span className={Styles.bold}>Rank</span>
-      </div>
-      <div className='col-xs-4'>
-        <span className={Styles.bold}>Name</span>
-      </div>
-      <div className='col-xs-2'>
-        <span className={Styles.bold}>Points</span>
-      </div>
-      <div className='col-xs-1'>
-        <span className={Styles.bold}>Level</span>
-      </div>
-      <div className='col-xs-2'>
-        <span className={Styles.bold}>Words</span>
-      </div>
-      <div className='col-xs-1'>
-        <span className={Styles.bold}>%</span>
+      <div>
+        <div className='col-xs-1'>
+          <span className={Styles.bold}>Rank</span>
+        </div>
+        <div className='col-xs-4'>
+          <span className={Styles.bold}>Name</span>
+        </div>
+        <div className='col-xs-2'>
+          <span className={Styles.bold}>Points</span>
+        </div>
+        <div className='col-xs-1'>
+          <span className={Styles.bold}>Level</span>
+        </div>
+        <div className='col-xs-2'>
+          <span className={Styles.bold}>Words</span>
+        </div>
+        <div className='col-xs-1'>
+          <span className={Styles.bold}>%</span>
+        </div>
+        <div className={Styles.clearFix}></div>
       </div>
       {users.map((user, i) => {
         let bold = false;
