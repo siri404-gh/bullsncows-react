@@ -99,7 +99,7 @@ const LeaderBoard = ({ users, uid }) => {
         <span className={Styles.bold}>Words</span>
       </div>
       <div className='col-xs-1'>
-        <span className={Styles.bold}>Average</span>
+        <span className={Styles.bold}>%</span>
       </div>
       {users.map((user, i) => {
         let bold = false;
