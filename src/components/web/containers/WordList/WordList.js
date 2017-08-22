@@ -83,7 +83,7 @@ const mapDispatchToProps = (dispatch) => ({
         method: 'share',
         display: 'popup',
         href: gameUrl,
-        quote: 'My score after solving ' + (lastword.length + 1) + ' ' + wordType + 's: ' + num,
+        quote: 'My average after solving ' + (lastword.length + 1) + ' ' + wordType + 's: ' + (num/(lastword.length + 1)),
         picture: 'https://bullsncows-3d0f8.firebaseapp.com/889bff3b5c52e2d4e3010b5b853c7b2f.png',
         redirect_uri: gameUrl
       }, function (response) { });

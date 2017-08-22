@@ -20,16 +20,17 @@ const rank = (users, uid) => {
 const TotalPoints = ({ user, uid, points, attempts, guesses, lastword, users, level }) => {
   return (
     <div className="panel-group">
-      <div className="panel panel-success">
+      <div className="panel panel-info">
         <div className="panel-heading">
           {/* {user}: */}
-          <span className={Styles.level}><b>Difficulty Level</b>: {level},</span>
+          <b> Rank</b>: {rank(users, uid)},
           <b> Points</b> : {points},
-          <b> Solved</b>: {attempts},
+          <span className={Styles.level}><b> Difficulty Level</b>: {level},</span>
+          <b> Solved</b>: {attempts}
           {/* <b> Guesses</b>: {guesses}
           {lastword.length > 0 && <LastWord word={lastword[lastword.length - 1]} />},
-          <b> Average</b>: {points/attempts || 0} */}
-          <b> Rank</b>: {rank(users, uid)}
+          <b> Average</b>: {points/attempts || 0} */}<br/>
+          <progress style={Styles.progress} value={points} max="5000"></progress>
         </div>
       </div>
     </div>

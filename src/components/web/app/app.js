@@ -25,7 +25,7 @@ class App extends Component {
     return (
       <div className={Styles.myContainer + ' container'}>
         <div className='col-sm-1 col-md-2 col-lg-3'></div>
-        <div className={'col-xs-12 col-sm-10 col-md-8 col-lg-6 ' + Styles.center + ' ' +Styles.app}>
+        <div className={'col-xs-12 col-sm-10 col-md-8 col-lg-6 ' + Styles.center + ' ' + Styles.app}>
           {!login && <Login
             loading={loading}
             toggleLogin={toggleLogin}
@@ -60,21 +60,21 @@ const Board = ({ users, uid, points, lastword, level }) => (
     </div>
     <div className={Styles.clearFix}></div>
     <div>
-      <div className={Styles.borderTop + ' col-sm-6 ' + Styles.centerHor}>
+      <div className={Styles.borderTop + ' col-sm-5 ' + Styles.centerHor}>
         <WordList />
         <div className={Styles.clearFix}></div>
       </div>
-      <div className={Styles.borderTop + ' col-sm-6'}>
+      <div className={Styles.borderTop + ' col-sm-7'}>
         <LeaderBoard users={users} uid={uid} />
         <div className={Styles.clearFix}></div>
       </div>
     </div>
-    <Rules level={level} lastword={lastword} points={points}/>
+    <Rules level={level} lastword={lastword} points={points} />
     <div className={Styles.clearFix}></div>
     <GoogleAd
       client="ca-pub-6831276331714408"
       slot="4438683283"
-      format="auto"/>
+      format="auto" />
   </div>
 );
 
@@ -83,6 +83,24 @@ const LeaderBoard = ({ users, uid }) => {
   return (
     <div className={Styles.leaderBoard + ' ' + Styles.borderLeft}>
       <div><h6 className={Styles.center + ' ' + Styles.bold}> LeaderBoard </h6></div>
+      <div className='col-xs-1'>
+        <span className={Styles.bold}>Rank</span>
+      </div>
+      <div className='col-xs-4'>
+        <span className={Styles.bold}>Name</span>
+      </div>
+      <div className='col-xs-2'>
+        <span className={Styles.bold}>Points</span>
+      </div>
+      <div className='col-xs-1'>
+        <span className={Styles.bold}>Level</span>
+      </div>
+      <div className='col-xs-2'>
+        <span className={Styles.bold}>Words</span>
+      </div>
+      <div className='col-xs-1'>
+        <span className={Styles.bold}>Average</span>
+      </div>
       {users.map((user, i) => {
         let bold = false;
         if (user.user === uid) bold = true;
@@ -102,8 +120,11 @@ const LeaderBoard = ({ users, uid }) => {
             <div className='col-xs-1'>
               <span className={bold ? Styles.bold : Styles.normal}>{user.level}</span>
             </div>
-            <div className='col-xs-1'>
+            <div className='col-xs-2'>
               <span className={bold ? Styles.bold : Styles.normal}>{user.words.length}</span>
+            </div>
+            <div className='col-xs-1'>
+              <span className={bold ? Styles.bold : Styles.normal}>{Math.floor(user.points / user.words.length)}</span>
             </div>
             <div className={Styles.clearFix}></div>
           </div>
