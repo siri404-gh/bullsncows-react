@@ -87,7 +87,7 @@ const LeaderBoard = ({ users, uid }) => {
         <div className='col-xs-1'>
           <span className={Styles.bold}>Rank</span>
         </div>
-        <div className='col-xs-4'>
+        <div className='col-xs-3'>
           <span className={Styles.bold}>Name</span>
         </div>
         <div className='col-xs-2'>
@@ -98,6 +98,9 @@ const LeaderBoard = ({ users, uid }) => {
         </div>
         <div className='col-xs-2'>
           <span className={Styles.bold}>Words</span>
+        </div>
+        <div className='col-xs-1'>
+          <span className={Styles.bold}>Avg</span>
         </div>
         <div className='col-xs-1'>
           <span className={Styles.bold}>%</span>
@@ -114,7 +117,7 @@ const LeaderBoard = ({ users, uid }) => {
             <div className='col-xs-1'>
               <span className={bold ? Styles.bold : Styles.normal}>{i + 1}</span>
             </div>
-            <div className='col-xs-4'>
+            <div className='col-xs-3'>
               <span className={bold ? Styles.bold : Styles.normal}>{name}</span>
             </div>
             <div className='col-xs-2'>
@@ -128,6 +131,9 @@ const LeaderBoard = ({ users, uid }) => {
             </div>
             <div className='col-xs-1'>
               <span className={bold ? Styles.bold : Styles.normal}>{Math.floor(user.points / user.words.length)}</span>
+            </div>
+            <div className='col-xs-1'>
+              <span className={bold ? Styles.bold : Styles.normal}>{Math.floor(user.points / 50)}</span>
             </div>
             <div className={Styles.clearFix}></div>
           </div>
