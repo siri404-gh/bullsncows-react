@@ -8,6 +8,8 @@ import Styles from './app.less';
 import bullsncows from './../../../../images/bullsncows.png';
 import bulls from './../../../../images/bulls.png';
 import cows from '../../../../images/cows.png';
+import fbIcon from '../../../../images/fbIcon.svg';
+import whatsappIcon from '../../../../images/whatsappIcon.svg';
 import Login from '../login/login';
 import { Loader } from '../presentational/Loader/Loader';
 import GoogleAd from '../presentational/GoogleAd/GoogleAd';
@@ -150,7 +152,7 @@ const Rules = ({ level, lastword, points }) => (
     <div className={Styles.rules + ' col-sm-10'}>
       <h6 className={Styles.bold}> How to play: </h6>
       <p>{'Goal is to find the ' + (level + 2) + ' ' + letterType + ' ' + wordType + '. All ' + (level + 2) + ' ' + letterType + 's are different. Start with a random guess with unique ' + letterType + 's. A bull indicates 1 ' + letterType + ' in the guess present in the actual ' + wordType + ' and at the right place. A cow indicates 1 at the wrong place. Difficulty Level increases every 500 points scored.'}</p>
-      <p className={Styles.center}>Like this game? <a target='_blank' href={'https://www.facebook.com/dialog/share?app_id=111074542870113&display=popup&quote=Level:%20' + level + ',%20Total%20' + wordType.charAt(0).toUpperCase() + wordType.slice(1) + 's:%20' + lastword.length + ',%20Total%20Points:%20' + points + '&&href=' + encodeURIComponent(gameUrl) + '&redirect_uri=' + encodeURIComponent(gameUrl)}>Facebook Share</a> | <a href={"whatsapp://send?text=" + encodeURIComponent(gameUrl)} data-action="share/whatsapp/share">Whatsapp Share</a>
+      <p className={Styles.center}><a target='_blank' href={'https://www.facebook.com/dialog/share?app_id=111074542870113&display=popup&quote=Level:%20' + level + ',%20Total%20' + wordType.charAt(0).toUpperCase() + wordType.slice(1) + 's:%20' + lastword.length + ',%20Total%20Points:%20' + points + '&&href=' + encodeURIComponent(gameUrl) + '&redirect_uri=' + encodeURIComponent(gameUrl)}><img className={Styles.shareIcon} src={fbIcon} /></a> <a href={"whatsapp://send?text=" + encodeURIComponent(gameUrl)} data-action="share/whatsapp/share"><img className={Styles.shareIcon} src={whatsappIcon} /></a>
       </p>
     </div>
     <div className='col-sm-1'>
