@@ -44,13 +44,13 @@ const initApp = function (toggleLogin, toggleLoading, saveUser, getDetails, getU
         getUsers();
       });
     } else {
+      toggleLoading(false);
       const ui = new firebaseui.auth.AuthUI(firebase.auth());
       ui.start('#firebaseui-auth-container', uiConfig);
     }
   }, function (error) {
     console.log(error);
   });
-  toggleLoading(false);
 };
 
 const Login = ({ loading, toggleLogin, toggleLoading, saveUser, getDetails, getUsers }) => {
