@@ -8,6 +8,7 @@ import userReducer from './user/userReducer';
 import lastwordReducer from './lastword/lastwordRecucer';
 import usersReducer from './users/usersReducer';
 import levelReducer from './level/levelReducer';
+import leaderboardReducer from './leaderboard/leaderboardReducer';
 
 const reducer = combineReducers({
   login: loginReducer,
@@ -18,7 +19,8 @@ const reducer = combineReducers({
   user: userReducer,
   lastword: lastwordReducer,
   users: usersReducer,
-  level: levelReducer
+  level: levelReducer,
+  leaderboard: leaderboardReducer,
 });
 
 export default reducer;

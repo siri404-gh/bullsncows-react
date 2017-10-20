@@ -18,12 +18,13 @@ import { toggleLoading } from '../../../actions/loading/loadingActions';
 import { saveUser } from '../../../actions/user/userActions';
 import { getDetails } from '../../../actions/details/detailsActions';
 import { getUsers } from '../../../actions/users/usersActions';
+import { toggleLeaderboard } from '../../../actions/leaderboard/leaderboardActions';
 import { gameUrl, numOfLetters, wordType } from '../../../../variables';
 const letterType = wordType === 'number' ? 'digit' : 'letter';
 
 class App extends Component {
   render() {
-    const { login, loading, toggleLogin, toggleLoading, saveUser, getDetails, users, getUsers, uid, points, lastword, level } = this.props;
+    const { login, loading, toggleLogin, toggleLoading, saveUser, getDetails, users, getUsers, uid, points, lastword, level, leaderboard, toggleLeaderboard } = this.props;
     return (
       <div className={Styles.myContainer + ' container'}>
         <div className='col-sm-1 col-md-2 col-lg-3'></div>
@@ -40,7 +41,9 @@ class App extends Component {
             uid={uid}
             points={points}
             lastword={lastword}
-            level={level} />}
+            level={level}
+            leaderboard={leaderboard}
+            toggleLeaderboard={toggleLeaderboard}/>}
           {loading && <Loader />}
         </div>
         <div className='col-sm-1 col-md-2 col-lg-3'></div>
@@ -49,7 +52,9 @@ class App extends Component {
   }
 };
 
-const Board = ({ users, uid, points, lastword, level }) => (
+const Board = ({ users, uid, points, lastword, level, leaderboard, toggleLeaderboard }) => {
+  let width = leaderboard ? 'col-lg-5' : 'col-sm-12';
+  return (
   <div>
     <div className='col-xs-12'>
       <div className={Styles.rowPadding}>
@@ -62,14 +67,14 @@ const Board = ({ users, uid, points, lastword, level }) => (
     </div>
     <div className={Styles.clearFix}></div>
     <div>
-      <div className={Styles.borderTop + ' col-sm-12 ' + Styles.centerHor}>
+      <div className={Styles.borderTop + ' ' + width + ' ' + Styles.centerHor}>
         <WordList />
         <div className={Styles.clearFix}></div>
       </div>
-      {/* <div className={Styles.borderTop + ' col-sm-7'}>
+      {leaderboard && <div className={Styles.borderTop + ' col-sm-7'}>
         <LeaderBoard users={users} uid={uid} />
         <div className={Styles.clearFix}></div>
-      </div> */}
+      </div>}
     </div>
     <Rules level={level} lastword={lastword} points={points} />
     <div className={Styles.clearFix}></div>
@@ -77,8 +82,10 @@ const Board = ({ users, uid, points, lastword, level }) => (
       client="ca-pub-6831276331714408"
       slot="4438683283"
       format="auto" />
+    <a href='#' onClick={() => toggleLeaderboard(!leaderboard)}>.</a>
   </div>
-);
+)
+};
 
 const LeaderBoard = ({ users, uid }) => {
   users.sort((a, b) => b.points - a.points);
@@ -168,7 +175,8 @@ const mapStateToProps = state => {
     uid: state.user.uid,
     points: state.points,
     lastword: state.lastword,
-    level: state.level
+    level: state.level,
+    leaderboard: state.leaderboard,
   };
 };
 
@@ -177,7 +185,8 @@ const mapDispatchToProps = dispatch => ({
   toggleLoading: loading => dispatch(toggleLoading(loading)),
   saveUser: data => dispatch(saveUser(data)),
   getDetails: userId => dispatch(getDetails(userId)),
-  getUsers: () => dispatch(getUsers())
+  getUsers: () => dispatch(getUsers()),
+  toggleLeaderboard: show => dispatch(toggleLeaderboard(show)),
 });
 
 export default connect(
