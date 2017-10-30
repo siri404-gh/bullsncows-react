@@ -82,7 +82,7 @@ const Board = ({ users, uid, points, lastword, level, leaderboard, toggleLeaderb
       client="ca-pub-6831276331714408"
       slot="4438683283"
       format="auto" />
-    <a href='#' onClick={() => toggleLeaderboard(!leaderboard)}>.</a>
+    <a style={{color: white}} href='#' onClick={() => toggleLeaderboard(!leaderboard)}>.</a>
   </div>
 )
 };
