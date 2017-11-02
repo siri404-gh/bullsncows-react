@@ -72,7 +72,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => ({
   resetWords: (num, userId, lastword, word, displayName) => {
-    let level = Math.floor(num / 500) + 1;
+    let level = Math.floor(num / 300) + 1;
     dispatch(resetWords());
     dispatch(updatePoints(num, userId, [...lastword, word], displayName, level));
     dispatch(setLevel(level));
