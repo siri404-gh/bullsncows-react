@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import AddWord from '../containers/AddWord/AddWord';
 import WordList from '../containers/WordList/WordList';
 import TotalPoints from '../containers/TotalPoints/TotalPoints';
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 import Styles from './app.less';
 import bullsncows from './../../../../images/bullsncows.png';
 import bulls from './../../../../images/bulls.png';
@@ -28,7 +28,7 @@ class App extends Component {
     return (
       <div className={Styles.myContainer + ' container'}>
         <div className='col-sm-1 col-md-2 col-lg-3'></div>
-        <div className={'col-xs-12 col-sm-10 col-md-8 col-lg-6 ' + Styles.center + ' ' + Styles.app}>
+        <div className={'col-xs-12' + Styles.center + ' ' + Styles.app}>
           {!login && <Login
             loading={loading}
             toggleLogin={toggleLogin}
@@ -43,7 +43,7 @@ class App extends Component {
             lastword={lastword}
             level={level}
             leaderboard={leaderboard}
-            toggleLeaderboard={toggleLeaderboard}/>}
+            toggleLeaderboard={toggleLeaderboard} />}
           {loading && <Loader />}
         </div>
         <div className='col-sm-1 col-md-2 col-lg-3'></div>
@@ -55,36 +55,36 @@ class App extends Component {
 const Board = ({ users, uid, points, lastword, level, leaderboard, toggleLeaderboard }) => {
   let width = leaderboard ? 'col-lg-5' : 'col-sm-12';
   return (
-  <div>
-    <div className='col-xs-12'>
-      <div className={Styles.rowPadding}>
-        <img className={Styles.headerImg} src={bulls} />
-        <img className={Styles.headerImg} src={cows} />
-        <span className={Styles.level}>{'Difficulty Level: ' + level}</span>
-      </div>
-      <TotalPoints />
-      <AddWord />
-    </div>
-    <div className={Styles.clearFix}></div>
     <div>
-      <div className={Styles.borderTop + ' ' + width + ' ' + Styles.centerHor}>
-        <WordList />
-        <div className={Styles.clearFix}></div>
+      <div className='col-xs-12'>
+        <div className={Styles.rowPadding}>
+          <img className={Styles.headerImg} src={'https://bullsncows-3d0f8.firebaseapp.com/' + bulls} />
+          <img className={Styles.headerImg} src={'https://bullsncows-3d0f8.firebaseapp.com/' + cows} />
+          <span className={Styles.level}>{'Difficulty Level: ' + level}</span>
+        </div>
+        <TotalPoints />
+        <AddWord />
       </div>
-      {leaderboard && <div className={Styles.borderTop + ' col-sm-7'}>
-        <LeaderBoard users={users} uid={uid} />
-        <div className={Styles.clearFix}></div>
-      </div>}
+      <div className={Styles.clearFix}></div>
+      <div>
+        <div className={Styles.borderTop + ' ' + width + ' ' + Styles.centerHor}>
+          <WordList />
+          <div className={Styles.clearFix}></div>
+        </div>
+        {leaderboard && <div className={Styles.borderTop + ' col-sm-7'}>
+          <LeaderBoard users={users} uid={uid} />
+          <div className={Styles.clearFix}></div>
+        </div>}
+      </div>
+      <Rules level={level} lastword={lastword} points={points} />
+      <div className={Styles.clearFix}></div>
+      <GoogleAd
+        client="ca-pub-6831276331714408"
+        slot="5738158442"
+        format="fluid" />
+      <a style={{ color: 'white' }} href='#' onClick={() => toggleLeaderboard(!leaderboard)}>.</a>
     </div>
-    <Rules level={level} lastword={lastword} points={points} />
-    <div className={Styles.clearFix}></div>
-    <GoogleAd
-      client="ca-pub-6831276331714408"
-      slot="4438683283"
-      format="auto" />
-    <a style={{color: 'white'}} href='#' onClick={() => toggleLeaderboard(!leaderboard)}>.</a>
-  </div>
-)
+  )
 };
 
 const LeaderBoard = ({ users, uid }) => {

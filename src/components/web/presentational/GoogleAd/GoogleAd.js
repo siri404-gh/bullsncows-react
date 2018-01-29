@@ -11,6 +11,7 @@ export default class GoogleAd extends Component {
       <div className={Styles.Ad}>
         <ins className="adsbygoogle"
           style={{ 'display': 'block' }}
+          data-ad-layout-key="-e8+7r+2h-jz+sa"
           data-ad-client={client}
           data-ad-slot={slot}
           data-ad-format={format}>
