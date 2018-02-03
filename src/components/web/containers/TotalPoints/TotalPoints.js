@@ -29,7 +29,7 @@ const TotalPoints = ({ user, uid, points, attempts, guesses, lastword, users, le
           <b> Solved</b>: {attempts}
           {/* <b> Guesses</b>: {guesses}
           {lastword.length > 0 && <LastWord word={lastword[lastword.length - 1]} />},
-          <b> Average</b>: {points/attempts || 0} */}<br/>
+          <b> Average</b>: {points/attempts || 0} */}<br />
           <progress style={Styles.progress} value={points} max="5000"></progress>
         </div>
       </div>

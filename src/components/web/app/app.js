@@ -59,7 +59,7 @@ const Board = ({ users, uid, points, lastword, level, leaderboard, toggleLeaderb
       <div className='col-xs-12'>
         <div className={Styles.rowPadding}>
           <img className={Styles.headerImg} src={'https://bullsncows-3d0f8.firebaseapp.com/' + bulls} />
-          <img className={Styles.headerImg} src={'https://bullsncows-3d0f8.firebaseapp.com/' + cows} />
+          <img className={Styles.headerImg} src={'https://bullsncows-3d0f8.firebaseapp.com/' + cows} /><br />
           <span className={Styles.level}>{'Difficulty Level: ' + level}</span>
         </div>
         <TotalPoints />
@@ -72,8 +72,10 @@ const Board = ({ users, uid, points, lastword, level, leaderboard, toggleLeaderb
           <div className={Styles.clearFix}></div>
         </div>
         {leaderboard && <div className={Styles.borderTop + ' col-sm-7'}>
-          <LeaderBoard users={users} uid={uid} />
-          <div className={Styles.clearFix}></div>
+          <div className='row'>
+            <LeaderBoard users={users} uid={uid} />
+            <div className={Styles.clearFix}></div>
+          </div>
         </div>}
       </div>
       <Rules level={level} lastword={lastword} points={points} />
